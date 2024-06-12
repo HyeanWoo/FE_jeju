@@ -15,7 +15,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Call me By11{" "}
+            Call me By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
