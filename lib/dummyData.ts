@@ -164,3 +164,34 @@ export const otherSpots = [
     location: "제주시 한림읍",
   },
 ];
+
+export const tempCourseInfo = [
+  {
+    placeName: "곱은달사진관",
+    placeType: "사진관, 포토스튜디오",
+    location: "제주특별자치도 제주시 조천읍 곱은달길 24 1층",
+    gallery: [
+      "/image/temp/temp-gallery-item-1-1.png",
+      "/image/temp/temp-gallery-item-1-2.png",
+      "/image/temp/temp-gallery-item-1-3.png",
+      "/image/temp/temp-gallery-item-1-1.png",
+      "/image/temp/temp-gallery-item-1-2.png",
+      "/image/temp/temp-gallery-item-1-3.png",
+    ],
+    isLiked: false,
+  },
+  {
+    placeName: "아카이브",
+    placeType: "양식",
+    location: "제주특별자치도 제주시 조천읍 와선로 204 1층",
+    gallery: [
+      "/image/temp/temp-gallery-item-2-1.png",
+      "/image/temp/temp-gallery-item-2-2.png",
+      "/image/temp/temp-gallery-item-2-3.png",
+      "/image/temp/temp-gallery-item-2-1.png",
+      "/image/temp/temp-gallery-item-2-2.png",
+      "/image/temp/temp-gallery-item-2-3.png",
+    ],
+    isLiked: false,
+  },
+];
