@@ -16,11 +16,11 @@ const HomeSpotlight = () => {
             className="rounded-lg"
           />
           <div className="flex w-full flex-col justify-center space-y-1">
-            <h4 className="text-lg font-bold text-white">환승연애3</h4>
-            <h5 className="text-xs font-semibold text-white">2023 예능</h5>
+            <h4 className="text-heading text-white">환승연애3</h4>
+            <h5 className="text-caption text-white">2023 예능</h5>
           </div>
         </div>
-        <p className="text-sm font-medium text-white">
+        <p className="text-label text-white">
           환승연애3 방송 이후 관광 데이터 기준 가장 많은 주목을 받고 있는 제주
           핫플을 추천해 드려요.
         </p>
@@ -36,13 +36,9 @@ const HomeSpotlight = () => {
               />
               <div className="flex w-full items-center justify-between">
                 <div className="flex flex-col py-[3px]">
-                  <h3 className="font-bold text-white">{spot.spotName}</h3>
-                  <h5 className="text-xs font-semibold text-white">
-                    {spot.placeType}
-                  </h5>
-                  <h4 className="text-sm font-medium text-white">
-                    {spot.location}
-                  </h4>
+                  <h3 className="text-bodyBold text-white">{spot.spotName}</h3>
+                  <h5 className="text-caption text-white">{spot.placeType}</h5>
+                  <h4 className="text-label text-white">{spot.location}</h4>
                 </div>
                 <button>
                   <Image

@@ -7,7 +7,7 @@ export default function AboutCourseSection() {
   return (
     <section className="flex flex-col pb-6">
       <div className="px-5 pb-3 pt-6">
-        <h2 className="font-neutral-900 text-lg font-bold">코스 소개</h2>
+        <h2 className="text-heading text-neutral-900">코스 소개</h2>
       </div>
       <div className="relative -mx-5 pb-6">
         <Image
@@ -17,10 +17,10 @@ export default function AboutCourseSection() {
           height={195}
           className="h-[195px] w-[390px] object-cover"
         />
-        <span className="absolute inset-0 left-40 top-10 flex h-5 w-5 items-center justify-center rounded-full bg-main-500 text-xs font-semibold text-white">
+        <span className="text-caption absolute inset-0 left-40 top-10 flex h-5 w-5 items-center justify-center rounded-full bg-main-500 text-white">
           1
         </span>
-        <span className="absolute inset-0 left-[225px] top-[136px] flex h-5 w-5 items-center justify-center rounded-full bg-main-500 text-xs font-semibold text-white">
+        <span className="text-caption absolute inset-0 left-[225px] top-[136px] flex h-5 w-5 items-center justify-center rounded-full bg-main-500 text-white">
           2
         </span>
         <div className="absolute left-[154px] top-[98px] w-[95px] rotate-[58deg] border border-dashed border-neutral-500"></div>
@@ -29,7 +29,7 @@ export default function AboutCourseSection() {
         {tempCourseInfo.map((info, index) => (
           <div key={info.location} className="flex space-x-2">
             <div className="flex flex-col items-center space-y-2">
-              <span className="flex h-[26px] w-[26px] flex-none items-center justify-center rounded-full bg-main-500 text-xs font-semibold text-white">
+              <span className="text-caption flex h-[26px] w-[26px] flex-none items-center justify-center rounded-full bg-main-500 text-white">
                 {index + 1}
               </span>
               <div className="h-full w-0.5 border border-neutral-100"></div>
@@ -37,11 +37,11 @@ export default function AboutCourseSection() {
             <div className="flex flex-col space-y-4">
               <div className="flex justify-between">
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-lg font-bold">{info.placeName}</h3>
-                  <h5 className="text-xs font-semibold text-neutral-400">
+                  <h3 className="text-heading">{info.placeName}</h3>
+                  <h5 className="text-caption text-neutral-400">
                     {info.placeType}
                   </h5>
-                  <h4 className="text-sm font-medium text-neutral-700">
+                  <h4 className="text-label text-neutral-700">
                     {info.location}
                   </h4>
                 </div>
@@ -71,7 +71,7 @@ export default function AboutCourseSection() {
         ))}
       </div>
       <button className="flex w-full items-center justify-center rounded-lg border bg-main-500 py-[11px]">
-        <span className="font-bold text-white">내 코스로 저장</span>
+        <span className="text-bodyBold text-white">내 코스로 저장</span>
       </button>
     </section>
   );

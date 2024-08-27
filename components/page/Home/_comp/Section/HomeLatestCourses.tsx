@@ -20,8 +20,10 @@ const HomeLatestCourses = () => {
               overlayClass="left-[42px] top-[50px]"
             />
             <div className="flex flex-col space-y-1">
-              <h4 className="font-bold text-neutral-800">{course.title}</h4>
-              <h5 className="text-xs text-neutral-400">{course.episode}</h5>
+              <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>
+              <h5 className="text-caption text-neutral-400">
+                {course.episode}
+              </h5>
             </div>
           </div>
         )}

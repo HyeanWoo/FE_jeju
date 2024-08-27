@@ -30,6 +30,53 @@ const config: Config = {
         "main-800": "#621826",
         "main-900": "#310C13",
       },
+      fontSize: {
+        title3: [
+          "24px",
+          {
+            fontWeight: "700",
+            lineHeight: "33.6px",
+          },
+        ],
+        heading: [
+          "18px",
+          {
+            fontWeight: "700",
+            lineHeight: "25.56px",
+          },
+        ],
+        label: [
+          "14px",
+          {
+            fontWeight: "500",
+            lineHeight: "17.5px",
+          },
+        ],
+        caption: [
+          "12px",
+          {
+            fontWeight: "600",
+            lineHeight: "14.4px",
+          },
+        ],
+        bodyBold: [
+          "16px",
+          {
+            fontWeight: "700",
+            lineHeight: "24px",
+          },
+        ],
+        bodyRegular: [
+          "16px",
+          {
+            fontWeight: "400",
+            lineHeight: "24px",
+          },
+        ],
+      },
+      fontFamily: {
+        pretendard: ["var(--font-pretendard)"],
+      },
     },
   },
   plugins: [],

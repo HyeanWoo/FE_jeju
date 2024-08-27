@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getHealthCheck } from "./fetch";
+import { getHealthCheck, fetchSummary, fetchContents } from "./fetch";
+import { SummaryResponse } from "./types";
+import { ContentsResponse } from "./types/type";
 
 export const useHealthCheck = () => {
   return useQuery({
@@ -8,5 +10,19 @@ export const useHealthCheck = () => {
     retry(failCount) {
       return failCount < 1;
     },
+  });
+};
+
+export const useSummary = (id: number) => {
+  return useQuery<SummaryResponse>({
+    queryKey: ["summary", id],
+    queryFn: () => fetchSummary(id),
+  });
+};
+
+export const useContents = () => {
+  return useQuery<ContentsResponse>({
+    queryKey: ["contents"],
+    queryFn: fetchContents,
   });
 };

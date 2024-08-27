@@ -18,8 +18,10 @@ const HomeHeroBanner = () => {
           width={133}
           height={37}
         />
-        <h3 className="text-white">동진/다혜 커플이 걸었던 갈대밭</h3>
-        <div className="flew-col flex space-x-1.5 text-sm leading-[17.5px] text-white">
+        <h3 className="text-bodyRegular text-white">
+          동진/다혜 커플이 걸었던 갈대밭
+        </h3>
+        <div className="flew-col text-label flex space-x-1.5 text-white">
           <h4 className="">설렘주의</h4>
           <span className="tag-divider"></span>
           <h4 className="">재회각</h4>

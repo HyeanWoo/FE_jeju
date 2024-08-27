@@ -1,6 +1,11 @@
 import Image from "next/image";
+import { Summary } from "@/components/api/types";
 
-export default function CourseInfoSection() {
+export default function CourseInfoSection({
+  courseData,
+}: {
+  courseData?: Summary;
+}) {
   return (
     <section className="flex flex-col space-y-6 pb-10">
       <div className="relative -mx-5 flex">
@@ -20,23 +25,21 @@ export default function CourseInfoSection() {
         />
       </div>
       <div className="flex flex-col space-y-3">
-        <h1 className="text-2xl font-bold text-neutral-900">
-          차분한 가을 제주 감성을 느낄 수 있는 동진/다혜 사진관 데이트
-        </h1>
+        <h1 className="text-title3 text-neutral-900">{courseData?.title}</h1>
         <div className="flex space-x-1.5">
-          <h5 className="text-sm font-medium text-neutral-400">차분한</h5>
+          <h5 className="text-label text-neutral-400">차분한</h5>
           <span className="tag-divider-gray" />
-          <h5 className="text-sm font-medium text-neutral-400">이색적인</h5>
+          <h5 className="text-label text-neutral-400">이색적인</h5>
           <span className="tag-divider-gray" />
-          <h5 className="text-sm font-medium text-neutral-400">먹방</h5>
+          <h5 className="text-label text-neutral-400">먹방</h5>
         </div>
-        <h3 className="text-neutral-800">
-          환승연애3 동진, 다혜의 마지막 X 데이트 장소 모음집
+        <h3 className="text-bodyRegular text-neutral-800">
+          {courseData?.description}
         </h3>
       </div>
       <div className="flex space-x-3">
         <button className="flex w-[290px] shrink-0 items-center justify-center rounded-lg border py-[11px]">
-          <span className="font-bold text-main-500">
+          <span className="text-bodyBold text-main-500">
             방송에 나온 다른 코스보기
           </span>
         </button>

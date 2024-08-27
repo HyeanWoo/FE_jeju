@@ -16,12 +16,10 @@ const Section = ({ title, children, isDetail }: SectionProps) => {
   return (
     <section className="container flex flex-col space-y-3">
       <div className="flex justify-between">
-        <h2 className="text-lg font-bold text-neutral-900">{title}</h2>
+        <h2 className="text-heading text-neutral-900">{title}</h2>
         {isDetail && (
           <button className="flex items-center" onClick={onClickMore}>
-            <h5 className="text-sm leading-[17.5px] text-neutral-400">
-              더보기
-            </h5>
+            <h5 className="text-label text-neutral-400">더보기</h5>
             <img
               src="/image/icon/arrow-drop-right-line.svg"
               alt="arrow-drop-right-line"

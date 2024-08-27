@@ -5,7 +5,7 @@ export default function SimilarCourseSection() {
   return (
     <section className="container flex flex-col space-y-3 pt-6">
       <div className="flex justify-between">
-        <h2 className="text-lg font-bold text-neutral-900">비슷한 코스</h2>
+        <h2 className="text-heading text-neutral-900">비슷한 코스</h2>
         <button className="flex items-center">
           <h5 className="text-sm leading-[17.5px] text-neutral-400">더보기</h5>
           <Image
@@ -39,8 +39,10 @@ export default function SimilarCourseSection() {
               />
             </div>
             <div className="flex flex-col space-y-1">
-              <h4 className="font-bold text-neutral-800">{course.title}</h4>
-              <h5 className="text-xs text-neutral-400">{course.episode}</h5>
+              <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>
+              <h5 className="text-caption text-neutral-400">
+                {course.episode}
+              </h5>
             </div>
           </div>
         ))}
