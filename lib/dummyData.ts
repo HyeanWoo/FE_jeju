@@ -1,50 +1,50 @@
 export const locations = [
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju1",
     name: "애월",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju2",
     name: "제주시",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju3",
     name: "서귀포",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju4",
     name: "구좌",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju5",
     name: "성산",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju6",
     name: "한림",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju7",
     name: "조천",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju8",
     name: "표선",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju9",
     name: "한경",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju10",
     name: "안덕",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju11",
     name: "남원",
   },
   {
-    thumbnail: "",
+    thumbnail: "https://via.placeholder.com/140?text=jeju12",
     name: "대정",
   },
 ];

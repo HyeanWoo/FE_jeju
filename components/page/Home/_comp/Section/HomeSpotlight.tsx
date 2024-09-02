@@ -5,7 +5,7 @@ import Section from "@/components/common/Section/Section";
 
 const HomeSpotlight = () => {
   return (
-    <Section title="환승연애3에서 가장 주목받은 제주 스팟" isDetail={false}>
+    <Section title="환승연애3에서 가장 주목받은 제주 스팟" showMore={false}>
       <div className="flex flex-col space-y-3 rounded-[10px] bg-gradient-to-b from-main-500 to-main-300 p-4">
         <div className="flex space-x-3">
           <Image
@@ -14,6 +14,7 @@ const HomeSpotlight = () => {
             width={96}
             height={136}
             className="rounded-lg"
+            style={{ width: 96, height: 136 }}
           />
           <div className="flex w-full flex-col justify-center space-y-1">
             <h4 className="text-heading text-white">환승연애3</h4>
@@ -33,6 +34,7 @@ const HomeSpotlight = () => {
                 width={70}
                 height={70}
                 className="h-[70px] w-[70px] rounded-[4px] object-cover"
+                style={{ width: 70, height: 70 }}
               />
               <div className="flex w-full items-center justify-between">
                 <div className="flex flex-col py-[3px]">
@@ -46,6 +48,7 @@ const HomeSpotlight = () => {
                     alt="like-button"
                     width={24}
                     height={24}
+                    style={{ width: 24, height: 24 }}
                   />
                 </button>
               </div>

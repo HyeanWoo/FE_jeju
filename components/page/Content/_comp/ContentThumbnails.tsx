@@ -1,4 +1,4 @@
-const LocationDetailThumbnails = () => {
+const ContentThumbnails = () => {
   return (
     <>
       <img
@@ -27,4 +27,4 @@ const LocationDetailThumbnails = () => {
   );
 };
 
-export default LocationDetailThumbnails;
+export default ContentThumbnails;

@@ -1,40 +1,56 @@
 import Image from "next/image";
+import { Fragment } from "react";
 import { Summary } from "@/components/api/types";
 
-export default function CourseInfoSection({
-  courseData,
+export default function SummaryInfoSection({
+  summaryData,
 }: {
-  courseData?: Summary;
+  summaryData?: Summary;
 }) {
+  const tags = summaryData?.tag?.split(",") ?? [];
+
+  const checkLastTag = (currentIndex: number, tagLength: number) => {
+    return tagLength - 1 === currentIndex;
+  };
+
   return (
     <section className="flex flex-col space-y-6 pb-10">
       <div className="relative -mx-5 flex">
         <Image
-          src="/image/temp/temp-course-main.png"
+          src={
+            summaryData?.image.imageUrl ??
+            "https://via.placeholder.com/390x295?text=default-thumbnail"
+          }
           alt="temp-course-main"
           width={390}
           height={295}
           className="h-[295px] w-[390px] object-cover"
+          style={{ width: 390, height: 295 }}
         />
         <Image
+          // todo: 프로그램 로고가 추가된 후 변경
           src="/image/temp/temp-trending-logo.svg"
           alt="temp-trending-logo"
           width={168}
           height={40}
           className="absolute bottom-[26px] left-5"
+          style={{ width: 168, height: 40 }}
         />
       </div>
       <div className="flex flex-col space-y-3">
-        <h1 className="text-title3 text-neutral-900">{courseData?.title}</h1>
+        <h1 className="text-title3 text-neutral-900">{summaryData?.title}</h1>
         <div className="flex space-x-1.5">
-          <h5 className="text-label text-neutral-400">차분한</h5>
-          <span className="tag-divider-gray" />
-          <h5 className="text-label text-neutral-400">이색적인</h5>
-          <span className="tag-divider-gray" />
-          <h5 className="text-label text-neutral-400">먹방</h5>
+          {tags.map((tag, index) => (
+            <Fragment key={tag}>
+              <h5 className="text-label text-neutral-400">{tag}</h5>
+              {checkLastTag(index, tags.length) && (
+                <span className="tag-divider-gray" />
+              )}
+            </Fragment>
+          ))}
         </div>
         <h3 className="text-bodyRegular text-neutral-800">
-          {courseData?.description}
+          {summaryData?.description}
         </h3>
       </div>
       <div className="flex space-x-3">
@@ -49,16 +65,10 @@ export default function CourseInfoSection({
             alt="like-button"
             width={24}
             height={24}
+            style={{ width: 24, height: 24 }}
           />
         </button>
       </div>
-      <select name="episode" id="episode-select" className="h-10 bg-neutral-50">
-        <option value="episode1">1화</option>
-        <option value="episode2">2화</option>
-        <option value="episode3">3화</option>
-        <option value="episode4">4화</option>
-        <option value="episode5">5화</option>
-      </select>
     </section>
   );
 }

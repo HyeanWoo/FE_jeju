@@ -1,1 +1,6 @@
-export type { Content, Summary, SummaryResponse } from "./type";
+export type {
+  Content,
+  Summary,
+  SummaryResponse,
+  ContentsResponse,
+} from "./type";

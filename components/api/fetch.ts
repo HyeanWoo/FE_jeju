@@ -24,8 +24,32 @@ export const fetchSummary = async (id: number) => {
   return response.json();
 };
 
+export const fetchSummaries = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API_V1}/summaryList`,
+  );
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
 export const fetchContents = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/contents`);
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
+export const fetchContentsBySummaryId = async (summaryId: number) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/summary/${summaryId}/contents`,
+  );
 
   if (!response.ok) {
     throw new Error("network problem is occurred.");

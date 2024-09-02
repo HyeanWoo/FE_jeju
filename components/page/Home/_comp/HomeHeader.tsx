@@ -1,6 +1,6 @@
 "use client";
 
-import { useHealthCheck } from "@/components/api/query";
+import { useHealthCheck } from "@/components/api/queries";
 import Image from "next/image";
 
 const HomeHeader = () => {
@@ -13,6 +13,7 @@ const HomeHeader = () => {
         alt="logo"
         width={162}
         height={30}
+        style={{ width: 162, height: 30 }}
       />
       <Image
         src={
@@ -23,6 +24,7 @@ const HomeHeader = () => {
         alt="search-btn"
         width={40}
         height={40}
+        style={{ width: 40, height: 40 }}
       />
     </div>
   );

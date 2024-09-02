@@ -5,12 +5,12 @@ import Section from "@/components/common/Section/Section";
 
 const HomeProgram = () => {
   return (
-    <Section title="방송으로 제주 코스 찾기" isDetail={true}>
+    <Section title="방송으로 제주 코스 찾기" showMore={true}>
       <Section.ItemList
         items={programs}
-        renderItem={(program) => (
+        renderItem={(program, index) => (
           <div
-            key={program.title}
+            key={index + program.title}
             className="relative w-[120px] max-w-[120px] flex-none"
           >
             <ImageWithOverlay

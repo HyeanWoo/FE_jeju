@@ -9,6 +9,7 @@ const HomeHeroBanner = () => {
           alt="main-image"
           width={350}
           height={400}
+          style={{ width: 350, height: 400 }}
         />
       </div>
       <div className="absolute bottom-5 left-5 flex flex-col space-y-2">
@@ -17,6 +18,7 @@ const HomeHeroBanner = () => {
           alt="temp-main-program-logo"
           width={133}
           height={37}
+          style={{ width: 133, height: 37 }}
         />
         <h3 className="text-bodyRegular text-white">
           동진/다혜 커플이 걸었던 갈대밭

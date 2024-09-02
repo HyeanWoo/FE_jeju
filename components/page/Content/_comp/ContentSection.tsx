@@ -1,11 +1,12 @@
 "use client";
+
 import Section from "@/components/common/Section/Section";
 import { otherSpots } from "@/lib/dummyData";
 
-const LocationDetailSection = () => {
+const ContentSection = () => {
   return (
     <div className="pt-6">
-      <Section title="제주스팟 모아보기" isDetail={true}>
+      <Section title="제주스팟 모아보기" showMore={true}>
         <Section.ItemList
           items={otherSpots}
           renderItem={(spot) => (
@@ -23,4 +24,4 @@ const LocationDetailSection = () => {
   );
 };
 
-export default LocationDetailSection;
+export default ContentSection;

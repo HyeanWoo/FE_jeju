@@ -1,9 +1,10 @@
 "use client";
 
+import Button from "@/components/common/Button/Button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function CourseHeader() {
+export default function SummaryHeader() {
   const router = useRouter();
 
   const goBack = () => {
@@ -18,6 +19,7 @@ export default function CourseHeader() {
           alt="search-btn"
           width={32}
           height={32}
+          style={{ width: 32, height: 32 }}
         />
       </button>
     </header>

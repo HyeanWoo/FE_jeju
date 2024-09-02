@@ -5,10 +5,10 @@ import { PropsWithChildren, ReactNode } from "react";
 
 interface SectionProps extends PropsWithChildren {
   title: string;
-  isDetail?: boolean;
+  showMore?: boolean | string;
 }
 
-const Section = ({ title, children, isDetail }: SectionProps) => {
+const Section = ({ title, children, showMore }: SectionProps) => {
   const onClickMore = () => {
     console.log(`${title} - 더보기 클릭됨`);
   };
@@ -17,14 +17,17 @@ const Section = ({ title, children, isDetail }: SectionProps) => {
     <section className="container flex flex-col space-y-3">
       <div className="flex justify-between">
         <h2 className="text-heading text-neutral-900">{title}</h2>
-        {isDetail && (
+        {showMore && (
           <button className="flex items-center" onClick={onClickMore}>
-            <h5 className="text-label text-neutral-400">더보기</h5>
-            <img
+            <h5 className="text-label text-neutral-400">
+              {typeof showMore === "string" ? showMore : "더보기"}
+            </h5>
+            <Image
               src="/image/icon/arrow-drop-right-line.svg"
               alt="arrow-drop-right-line"
               width={24}
               height={24}
+              style={{ width: 24, height: 24 }}
             />
           </button>
         )}
@@ -36,7 +39,7 @@ const Section = ({ title, children, isDetail }: SectionProps) => {
 
 interface SectionItemListProps {
   items: any[];
-  renderItem: (item: any) => ReactNode;
+  renderItem: (item: any, index: number) => ReactNode;
 }
 
 const SectionItemList = ({ items, renderItem }: SectionItemListProps) => {
@@ -68,6 +71,7 @@ const SectionListItem = ({
         width={140}
         height={140}
         className="h-[140px] w-[140px] rounded-[4px] object-cover"
+        style={{ width: 140, height: 140 }}
       />
       <div className="flex flex-col space-y-1">
         <h3 className="font-bold text-neutral-800">{item[titleKey]}</h3>

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-const LocationDetailHeader = () => {
+const ContentHeader = () => {
   const router = useRouter();
 
   const goBack = () => {
@@ -29,4 +29,4 @@ const LocationDetailHeader = () => {
   );
 };
 
-export default LocationDetailHeader;
+export default ContentHeader;

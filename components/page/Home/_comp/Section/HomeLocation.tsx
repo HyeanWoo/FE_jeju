@@ -4,7 +4,7 @@ import { locations } from "@/lib/dummyData";
 
 const HomeLocation = () => {
   return (
-    <Section title="지역별" isDetail={true}>
+    <Section title="지역별" showMore="전체보기">
       <Section.ItemList
         items={locations}
         renderItem={(location) => (

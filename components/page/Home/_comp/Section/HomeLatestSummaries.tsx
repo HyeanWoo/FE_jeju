@@ -3,26 +3,28 @@ import { trendingCourses } from "@/lib/dummyData";
 import ImageWithOverlay from "@/components/common/Overlay/ImageWithOverlay";
 import Section from "@/components/common/Section/Section";
 
-const HomeTrendingCourses = () => {
+const HomeLatestSummaries = () => {
   return (
-    <Section title="요즘 핫한 코스" isDetail={true}>
+    <Section title="최신 등록된 코스" showMore={true}>
       <Section.ItemList
         items={trendingCourses}
-        renderItem={(course) => (
+        renderItem={(summary, index) => (
           <div
-            key={course.title}
+            key={index + summary.title}
             className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
           >
             <ImageWithOverlay
-              src={course.thumbnail}
-              alt={course.title}
-              overlayText={course.title}
+              src={summary.thumbnail}
+              alt={summary.title}
+              overlayText={summary.title}
               overlayClass="left-[42px] top-[50px]"
             />
             <div className="flex flex-col space-y-1">
-              <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>
+              <h4 className="text-bodyBold text-neutral-800">
+                {summary.title}
+              </h4>
               <h5 className="text-caption text-neutral-400">
-                {course.episode}
+                {summary.episode}
               </h5>
             </div>
           </div>
@@ -32,4 +34,4 @@ const HomeTrendingCourses = () => {
   );
 };
 
-export default HomeTrendingCourses;
+export default HomeLatestSummaries;

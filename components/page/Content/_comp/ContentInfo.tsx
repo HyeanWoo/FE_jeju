@@ -1,4 +1,4 @@
-const LocationDetailInfo = () => {
+const ContentInfo = () => {
   return (
     <div className="flex flex-col gap-2 pb-9 pt-6">
       <h2 className="text-title3 text-neutral-900">곱은달사진관</h2>
@@ -23,4 +23,4 @@ const LocationDetailInfo = () => {
   );
 };
 
-export default LocationDetailInfo;
+export default ContentInfo;
