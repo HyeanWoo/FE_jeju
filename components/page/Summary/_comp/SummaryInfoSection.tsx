@@ -1,12 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { Fragment } from "react";
-import { Summary } from "@/components/api/types";
+import { IMAGE_SERVER_URL } from "@/components/common/constants";
+import { useSummary } from "@/components/api/queries";
 
-export default function SummaryInfoSection({
-  summaryData,
-}: {
-  summaryData?: Summary;
-}) {
+export default function SummaryInfoSection({ id }: { id: number }) {
+  const { data: { summary: summaryData } = {} } = useSummary(id);
+
   const tags = summaryData?.tag?.split(",") ?? [];
 
   const checkLastTag = (currentIndex: number, tagLength: number) => {
@@ -17,10 +18,7 @@ export default function SummaryInfoSection({
     <section className="flex flex-col space-y-6 pb-10">
       <div className="relative -mx-5 flex">
         <Image
-          src={
-            summaryData?.image.imageUrl ??
-            "https://via.placeholder.com/390x295?text=default-thumbnail"
-          }
+          src={`${IMAGE_SERVER_URL}${summaryData?.image.imageUrl ?? ""}`}
           alt="temp-course-main"
           width={390}
           height={295}

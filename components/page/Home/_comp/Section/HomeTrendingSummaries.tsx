@@ -1,12 +1,20 @@
 "use client";
 
-import Section from "@/components/common/Section/Section";
-import { Summary } from "@/components/api/types";
+import { useMemo } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Section from "@/components/common/Section/Section";
+import { useSummaries } from "@/components/api/queries";
+import { IMAGE_SERVER_URL } from "@/components/common/constants";
 
-const HomeTrendingSummaries = ({ summaries }: { summaries: Summary[] }) => {
+const HomeTrendingSummaries = () => {
   const route = useRouter();
+  const { data } = useSummaries();
+
+  const summaries = useMemo(
+    () => data?.map((summary) => summary.summary) ?? [],
+    [],
+  );
 
   const goToSummaryPage = (summaryId: number) => {
     route.push(`/summary/${summaryId}`);
@@ -24,7 +32,7 @@ const HomeTrendingSummaries = ({ summaries }: { summaries: Summary[] }) => {
           >
             <div className="relative">
               <Image
-                src={summary.image.imageUrl ?? ""}
+                src={`${IMAGE_SERVER_URL}${summary?.image?.imageUrl ?? ""}`}
                 alt={summary.title}
                 width={252}
                 height={140}

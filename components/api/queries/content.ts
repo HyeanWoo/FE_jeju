@@ -14,7 +14,7 @@ export const useContents = () => {
 
 export const useSummaryContents = (summaryId: number) => {
   return useQuery<ContentsResponse>({
-    queryKey: ["summaryContents"],
+    queryKey: ["summaryContents", summaryId],
     queryFn: () => fetchContentsBySummaryId(summaryId),
   });
 };

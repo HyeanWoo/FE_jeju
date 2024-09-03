@@ -14,7 +14,7 @@ type Image = {
   imageUrl: string;
   originImageName: string;
   imageName: string;
-  representImageYn: string;
+  representImageYn: "Y" | "N";
 };
 
 export type Summary = {
@@ -36,6 +36,7 @@ export type Content = {
   title: string;
   description: string;
   summaryId: number;
+  imageList: Image[];
 };
 
 export type SummaryResponse = {

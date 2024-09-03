@@ -1,5 +1,8 @@
-"use client";
-
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import Divider from "@/components/common/Divider";
 import {
   AboutSummarySection,
@@ -7,24 +10,50 @@ import {
   SummaryInfoSection,
   SimilarSummarySection,
 } from "./_comp";
-import { useSummary, useSummaryContents } from "@/components/api/queries";
+import { fetchContentsBySummaryId, fetchSummary } from "@/components/api/fetch";
+import {
+  REACT_QUERY_GC_TIME,
+  REACT_QUERY_STALE_TIME,
+} from "@/components/common/constants";
 
-export default function SummaryRoot({ params }: { params: { id: string } }) {
+export default async function SummaryRoot({
+  params,
+}: {
+  params: { id: string };
+}) {
   const id = parseInt(params.id);
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: REACT_QUERY_STALE_TIME,
+        gcTime: REACT_QUERY_GC_TIME,
+        retry: 3,
+      },
+    },
+  });
 
-  const { data: { summary } = {} } = useSummary(id);
-  const { data: { contents } = {} } = useSummaryContents(id);
+  await queryClient.prefetchQuery({
+    queryKey: ["summary", id],
+    queryFn: () => fetchSummary(id),
+  });
+
+  await queryClient.prefetchQuery({
+    queryKey: ["summaryContents", id],
+    queryFn: () => fetchContentsBySummaryId(id),
+  });
 
   return (
-    <div className="space-y mx-auto mb-24 flex w-full max-w-[390px] flex-col">
-      <SummaryHeader />
-      <main className="container flex w-full flex-col px-5">
-        <SummaryInfoSection summaryData={summary} />
-        <Divider />
-        <AboutSummarySection contents={contents} />
-        <Divider />
-        <SimilarSummarySection />
-      </main>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <div className="space-y mx-auto mb-24 flex w-full max-w-[390px] flex-col">
+        <SummaryHeader />
+        <main className="container flex w-full flex-col px-5">
+          <SummaryInfoSection id={id} />
+          <Divider />
+          <AboutSummarySection id={id} />
+          <Divider />
+          <SimilarSummarySection />
+        </main>
+      </div>
+    </HydrationBoundary>
   );
 }

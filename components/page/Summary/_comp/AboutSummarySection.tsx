@@ -1,13 +1,12 @@
 "use client";
 
-import { Content } from "@/components/api/types";
+import { useSummaryContents } from "@/components/api/queries";
 import Image from "next/image";
+import { IMAGE_SERVER_URL } from "@/components/common/constants";
 
-export default function AboutSummarySection({
-  contents,
-}: {
-  contents?: Content[];
-}) {
+export default function AboutSummarySection({ id }: { id: number }) {
+  const { data: { contents } = {} } = useSummaryContents(id);
+
   return (
     <section className="flex flex-col pb-6">
       <div className="px-5 pb-3 pt-6">
@@ -61,42 +60,17 @@ export default function AboutSummarySection({
                 </button>
               </div>
               <div className="flex space-x-2 overflow-x-auto">
-                {/* todo: 콘텐트이미지 타입 추가시 작업 예정 */}
-                {/* {info.gallery.map((galleryItem, index) => (
+                {content.imageList.map((imageItem) => (
                   <Image
-                    key={index + galleryItem}
-                    src={galleryItem}
-                    alt={galleryItem}
+                    key={imageItem.id}
+                    src={`${IMAGE_SERVER_URL}${imageItem?.imageUrl ?? ""}`}
+                    alt={imageItem.imageName}
                     width={120}
                     height={160}
                     className="h-40 w-[120px] flex-none rounded-lg object-cover"
                     style={{ width: 120, height: 160 }}
                   />
-                ))} */}
-                <Image
-                  src="https://via.placeholder.com/120x160?text=gallery-1"
-                  alt="gallery"
-                  width={120}
-                  height={160}
-                  className="h-40 w-[120px] flex-none rounded-lg object-cover"
-                  style={{ width: 120, height: 160 }}
-                />
-                <Image
-                  src="https://via.placeholder.com/120x160?text=gallery-2"
-                  alt="gallery"
-                  width={120}
-                  height={160}
-                  className="h-40 w-[120px] flex-none rounded-lg object-cover"
-                  style={{ width: 120, height: 160 }}
-                />
-                <Image
-                  src="https://via.placeholder.com/120x160?text=gallery-3"
-                  alt="gallery"
-                  width={120}
-                  height={160}
-                  className="h-40 w-[120px] flex-none rounded-lg object-cover"
-                  style={{ width: 120, height: 160 }}
-                />
+                ))}
               </div>
             </div>
           </div>
