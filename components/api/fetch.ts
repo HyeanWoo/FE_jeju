@@ -1,20 +1,9 @@
-export const getHealthCheck = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_API}/HealthCheck`,
-  );
-
-  if (!response.ok) {
-    throw new Error("network problem is occurred.");
-  }
-
-  return response;
-};
-
 export const fetchSummary = async (id: number) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/summary/${id}`,
+    {
+      cache: "no-store",
+    },
   );
 
   if (!response.ok) {
@@ -27,6 +16,9 @@ export const fetchSummary = async (id: number) => {
 export const fetchSummaries = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/summaryList`,
+    {
+      cache: "no-store",
+    },
   );
 
   if (!response.ok) {
@@ -37,8 +29,9 @@ export const fetchSummaries = async () => {
 };
 
 export const fetchContents = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/contents`);
-
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/contents`, {
+    cache: "no-store",
+  });
   if (!response.ok) {
     throw new Error("network problem is occurred.");
   }
@@ -49,6 +42,9 @@ export const fetchContents = async () => {
 export const fetchContentsBySummaryId = async (summaryId: number) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API}/summary/${summaryId}/contents`,
+    {
+      cache: "no-store",
+    },
   );
 
   if (!response.ok) {

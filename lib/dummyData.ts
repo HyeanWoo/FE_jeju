@@ -167,30 +167,80 @@ export const otherSpots = [
 
 export const tempCourseInfo = [
   {
-    placeName: "곱은달사진관",
+    id: "1",
+    title: "곱은달사진관",
     placeType: "사진관, 포토스튜디오",
-    location: "제주특별자치도 제주시 조천읍 곱은달길 24 1층",
-    gallery: [
-      "/image/temp/temp-gallery-item-1-1.png",
-      "/image/temp/temp-gallery-item-1-2.png",
-      "/image/temp/temp-gallery-item-1-3.png",
-      "/image/temp/temp-gallery-item-1-1.png",
-      "/image/temp/temp-gallery-item-1-2.png",
-      "/image/temp/temp-gallery-item-1-3.png",
+    description: "제주특별자치도 제주시 조천읍 곱은달길 24 1층",
+    imageList: [
+      {
+        id: "1",
+        imageUrl: "/image/temp/temp-gallery-item-1-1.png",
+        imageName: "/image/temp/temp-gallery-item-1-1.png",
+      },
+      {
+        id: "2",
+        imageUrl: "/image/temp/temp-gallery-item-1-2.png",
+        imageName: "/image/temp/temp-gallery-item-1-2.png",
+      },
+      {
+        id: "3",
+        imageUrl: "/image/temp/temp-gallery-item-1-3.png",
+        imageName: "/image/temp/temp-gallery-item-1-3.png",
+      },
+      {
+        id: "4",
+        imageUrl: "/image/temp/temp-gallery-item-1-1.png",
+        imageName: "/image/temp/temp-gallery-item-1-4.png",
+      },
+      {
+        id: "5",
+        imageUrl: "/image/temp/temp-gallery-item-1-2.png",
+        imageName: "/image/temp/temp-gallery-item-1-5.png",
+      },
+      {
+        id: "6",
+        imageUrl: "/image/temp/temp-gallery-item-1-3.png",
+        imageName: "/image/temp/temp-gallery-item-1-6.png",
+      },
     ],
     isLiked: false,
   },
   {
-    placeName: "아카이브",
+    id: "1",
+    title: "아카이브",
     placeType: "양식",
-    location: "제주특별자치도 제주시 조천읍 와선로 204 1층",
-    gallery: [
-      "/image/temp/temp-gallery-item-2-1.png",
-      "/image/temp/temp-gallery-item-2-2.png",
-      "/image/temp/temp-gallery-item-2-3.png",
-      "/image/temp/temp-gallery-item-2-1.png",
-      "/image/temp/temp-gallery-item-2-2.png",
-      "/image/temp/temp-gallery-item-2-3.png",
+    description: "제주특별자치도 제주시 조천읍 와선로 204 1층",
+    imageList: [
+      {
+        id: "1",
+        imageUrl: "/image/temp/temp-gallery-item-2-1.png",
+        imageName: "/image/temp/temp-gallery-item-1-1.png",
+      },
+      {
+        id: "2",
+        imageUrl: "/image/temp/temp-gallery-item-2-2.png",
+        imageName: "/image/temp/temp-gallery-item-1-2.png",
+      },
+      {
+        id: "3",
+        imageUrl: "/image/temp/temp-gallery-item-2-3.png",
+        imageName: "/image/temp/temp-gallery-item-1-3.png",
+      },
+      {
+        id: "4",
+        imageUrl: "/image/temp/temp-gallery-item-2-1.png",
+        imageName: "/image/temp/temp-gallery-item-1-4.png",
+      },
+      {
+        id: "5",
+        imageUrl: "/image/temp/temp-gallery-item-2-2.png",
+        imageName: "/image/temp/temp-gallery-item-1-5.png",
+      },
+      {
+        id: "6",
+        imageUrl: "/image/temp/temp-gallery-item-2-3.png",
+        imageName: "/image/temp/temp-gallery-item-1-6.png",
+      },
     ],
     isLiked: false,
   },

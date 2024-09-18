@@ -22,8 +22,16 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           alt="temp-course-main"
           width={390}
           height={295}
-          className="h-[295px] w-[390px] object-cover"
+          className="h-[295px] w-[390px] object-cover sm:hidden"
           style={{ width: 390, height: 295 }}
+        />
+        <Image
+          src={`${IMAGE_SERVER_URL}${summaryData?.image.imageUrl ?? ""}`}
+          alt="temp-course-main"
+          width={744}
+          height={563}
+          className="h-[563px] w-[744px] object-cover"
+          style={{ width: 744, height: 563 }}
         />
         <Image
           // todo: 프로그램 로고가 추가된 후 변경
@@ -52,7 +60,7 @@ export default function SummaryInfoSection({ id }: { id: number }) {
         </h3>
       </div>
       <div className="flex space-x-3">
-        <button className="flex w-[290px] shrink-0 items-center justify-center rounded-lg border py-[11px]">
+        <button className="flex w-[290px] flex-1 shrink-0 items-center justify-center rounded-lg border py-[11px]">
           <span className="text-bodyBold text-main-500">
             방송에 나온 다른 코스보기
           </span>

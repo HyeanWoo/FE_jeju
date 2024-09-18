@@ -8,7 +8,7 @@ type ButtonSize = "small" | "medium" | "large";
 interface ButtonProps
   extends Pick<
     ComponentPropsWithoutRef<"button">,
-    "onClick" | "type" | "disabled"
+    "onClick" | "type" | "disabled" | "className"
   > {
   variant?: ButtonVariant;
   size?: ButtonSize;
@@ -25,11 +25,12 @@ const Button = (props: ButtonProps) => {
     onClick,
     type = "button",
     disabled,
+    className = "",
   } = props;
 
-  const baseStyles = "font-bold py-2 px-4 rounded";
+  const baseStyles = "font-bold px-4 rounded-[8px]";
 
-  const variantStyles = {
+  const variantStyles: Record<ButtonVariant, string> = {
     primary: outline
       ? "text-[#F43C60] border border-[#C6C7CB] bg-transparent"
       : "bg-[#F43C60] text-white",
@@ -37,10 +38,10 @@ const Button = (props: ButtonProps) => {
     link: "text-[#F43C60] underline bg-transparent",
   };
 
-  const sizeStyles = {
-    small: "text-sm",
-    medium: "text-base",
-    large: "text-lg",
+  const sizeStyles: Record<ButtonSize, string> = {
+    small: "text-sm h-[38px]",
+    medium: "text-base h-[48px]",
+    large: "text-lg h-[56px]",
   };
 
   return (
@@ -50,6 +51,7 @@ const Button = (props: ButtonProps) => {
         variantStyles[variant],
         sizeStyles[size],
         outline && variant === "primary" && "border-1 border-[#C6C7CB]",
+        className,
       )}
       onClick={onClick}
       type={type}

@@ -11,7 +11,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "바로제주 - 제주도 여행 정보",
+  title: "travelcut - 제주도 여행 정보",
   description: "OTT에 나온 제주도의 아름다운 여행지를 알려드릴께요!",
 };
 
@@ -22,6 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d189c92b8d450da84be516fa5364123b"
+        ></script>
+      </head>
       <body className={pretendard.className}>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>

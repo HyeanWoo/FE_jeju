@@ -3,7 +3,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import HomeHeader from "./_comp/HomeHeader";  
+import HomeHeader from "./_comp/HomeHeader";
 import Footer from "@/components/shared/Footer";
 import {
   HomeHeroBanner,
@@ -40,16 +40,16 @@ export default async function HomeRoot() {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="relative">
-        <main className="mx-auto mb-24 flex w-full max-w-[390px] flex-col space-y-3 px-5">
+        <main className="mx-auto mb-24 flex w-full max-w-[390px] flex-col space-y-3 px-5 sm:max-w-[744px]">
           <HomeHeader />
           <div className="container flex flex-col space-y-[50px]">
             <HomeHeroBanner />
-            <HomeLocation />
+            {/* <HomeLocation /> */}
             <HomeTrendingSummaries />
-            <HomeProgram />
-            <HomeSpotlight />
-            <HomeLatestSummaries />
-            <HomeSpotsInJeju />
+            {/* <HomeProgram /> */}
+            {/* <HomeSpotlight /> */}
+            {/* <HomeLatestSummaries /> */}
+            {/* <HomeSpotsInJeju /> */}
           </div>
         </main>
         <Footer />
