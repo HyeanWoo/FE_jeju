@@ -7,7 +7,7 @@ const KakaoMap = () => {
     const kakaoMapScript = document.createElement("script");
     kakaoMapScript.async = false;
     kakaoMapScript.type = "text/javascript";
-    kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=d189c92b8d450da84be516fa5364123b&autoload=false`;
+    kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=d189c92b8d450da84be516fa5364123b`;
     document.head.appendChild(kakaoMapScript);
 
     const onLoadKakaoAPI = () => {
