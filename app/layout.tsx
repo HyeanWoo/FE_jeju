@@ -22,6 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d189c92b8d450da84be516fa5364123b"
+        ></script>
+      </head>
       <body className={pretendard.className}>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
