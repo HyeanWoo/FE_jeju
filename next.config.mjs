@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "dkyou7.synology.me",
         port: "",
       },
+      {
+        protocol: "http",
+        hostname: "tong.visitkorea.or.kr",
+        port: "",
+      },
     ],
   },
 };

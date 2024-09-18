@@ -52,7 +52,7 @@ export default async function SummaryRoot({
           <Divider />
           <AboutSummarySection id={id} />
           <Divider />
-          <SimilarSummarySection />
+          <SimilarSummarySection id={id} />
         </main>
         <Footer />
       </div>

@@ -1,11 +1,31 @@
-import { trendingCourses } from "@/lib/dummyData";
+"use client";
+
+import { useSummaryContents } from "@/components/api/queries";
+import { useTourContent } from "@/components/api/queries";
 import Image from "next/image";
 
-export default function SimilarSummarySection() {
+export default function SimilarSummarySection({ id }: { id: number }) {
+  const { data: { contents } = {} } = useSummaryContents(id);
+
+  if (!contents) {
+    return <div>loading...</div>;
+  }
+
+  const selectedContent = contents[0];
+
+  const { data: recommends } = useTourContent({
+    lat: Number(selectedContent.latitude),
+    lng: Number(selectedContent.longitude),
+  });
+
+  if (!recommends) {
+    return <div>loading...</div>;
+  }
+
   return (
     <section className="container flex flex-col space-y-3 pt-6">
       <div className="flex justify-between">
-        <h2 className="text-heading text-neutral-900">비슷한 코스</h2>
+        <h2 className="text-heading text-neutral-900">추천 코스</h2>
         <button className="flex items-center">
           <h5 className="text-sm leading-[17.5px] text-neutral-400">더보기</h5>
           <Image
@@ -18,36 +38,22 @@ export default function SimilarSummarySection() {
         </button>
       </div>
       <div className="flex w-full space-x-3 overflow-x-auto">
-        {trendingCourses.map((summary, index) => (
+        {recommends.map((course) => (
           <div
-            key={index + summary.title}
+            key={course.contentid}
             className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
           >
-            <div className="relative">
-              <Image
-                src={summary.thumbnail}
-                alt={summary.title}
-                width={252}
-                height={140}
-                className="rounded-[4px]"
-                style={{ width: 252, height: 140 }}
-              />
-              <Image
-                src={summary.programLogo}
-                alt={summary.title}
-                width={168}
-                height={40}
-                className="absolute left-[42px] top-[50px]"
-                style={{ width: 168, height: 40 }}
-              />
-            </div>
+            <Image
+              src={course.firstimage}
+              alt={course.title}
+              width={252}
+              height={140}
+              className="rounded-[4px]"
+              style={{ width: 252, height: 140 }}
+            />
             <div className="flex flex-col space-y-1">
-              <h4 className="text-bodyBold text-neutral-800">
-                {summary.title}
-              </h4>
-              <h5 className="text-caption text-neutral-400">
-                {summary.episode}
-              </h5>
+              <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>
+              <h5 className="text-caption text-neutral-400">{course.addr1}</h5>
             </div>
           </div>
         ))}

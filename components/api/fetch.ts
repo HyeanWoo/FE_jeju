@@ -1,3 +1,5 @@
+import { Position } from "./types";
+
 export const fetchSummary = async (id: number) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/summary/${id}`,
@@ -16,6 +18,21 @@ export const fetchSummary = async (id: number) => {
 export const fetchSummaries = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/summaryList`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
+export const fetchTourContent = async (position: Position) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/recommendation?mapX=${position.lng}&mapY=${position.lat}`,
     {
       cache: "no-store",
     },

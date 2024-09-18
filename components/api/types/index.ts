@@ -3,4 +3,5 @@ export type {
   Summary,
   SummaryResponse,
   ContentsResponse,
+  Position,
 } from "./type";

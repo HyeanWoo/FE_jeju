@@ -35,6 +35,11 @@ export type Content = {
   id: number;
   title: string;
   description: string;
+  category: string;
+  phone: string;
+  address: string;
+  latitude: string;
+  longitude: string;
   summaryId: number;
   imageList: Image[];
 };
@@ -45,4 +50,33 @@ export type SummaryResponse = {
 
 export type ContentsResponse = {
   contents: Content[];
+};
+
+export type Position = {
+  lat: number;
+  lng: number;
+};
+
+export type TourContent = {
+  addr1: string;
+  addr2: string;
+  areacode: string;
+  booktour: string;
+  cat1: string;
+  cat2: string;
+  cat3: string;
+  contentid: string;
+  contenttypeid: string;
+  cpyrhtDivCd: string;
+  createdtime: string;
+  dist: string;
+  firstimage: string;
+  firstimage2: string;
+  mapx: string;
+  mapy: string;
+  mlevel: string;
+  modifiedtime: string;
+  sigungucode: string;
+  tel: string;
+  title: string;
 };
