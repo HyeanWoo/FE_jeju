@@ -3,7 +3,6 @@
 import { useSummaryContents } from "@/components/api/queries";
 import Image from "next/image";
 import { IMAGE_SERVER_URL } from "@/components/common/constants";
-import KakaoMap from "@/components/shared/KaKaoMap/KaKaoMap";
 
 export default function AboutSummarySection({ id }: { id: number }) {
   const { data: { contents } = {} } = useSummaryContents(id);
@@ -13,15 +12,11 @@ export default function AboutSummarySection({ id }: { id: number }) {
       <div className="px-5 pb-3 pt-6">
         <h2 className="text-heading text-neutral-900">코스 소개</h2>
       </div>
-      <div className="relative -mx-5 pb-6">
-        <KakaoMap />
-        <span className="absolute inset-0 left-40 top-10 flex h-5 w-5 items-center justify-center rounded-full bg-main-500 text-caption text-white">
-          1
-        </span>
-        <span className="absolute inset-0 left-[225px] top-[136px] flex h-5 w-5 items-center justify-center rounded-full bg-main-500 text-caption text-white">
-          2
-        </span>
-        <div className="absolute left-[154px] top-[98px] w-[95px] rotate-[58deg] border border-dashed border-neutral-500"></div>
+      <div className="-mx-5 pb-6">
+        <div
+          id="kakao-map"
+          className="h-[195px] w-[390px] sm:h-[372px] sm:w-[744px]"
+        ></div>
       </div>
       <div className="flex flex-col space-y-6 pb-6">
         {contents?.map((content, index) => (
