@@ -37,7 +37,7 @@ export default function SummaryMap({ places }: SummaryMapOption) {
         const container = mapContainer.current;
         const options = {
           center: new window.kakao.maps.LatLng(center.lat, center.lng),
-          level: 5,
+          level: 8,
         };
 
         const map = new window.kakao.maps.Map(container, options);

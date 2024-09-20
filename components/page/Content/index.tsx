@@ -6,7 +6,11 @@ import {
   ContentThumbnails,
 } from "./_comp";
 
-const ContentRoot = () => {
+export default async function ContentRoot({
+  params,
+}: {
+  params: { contentId: string };
+}) {
   return (
     <div className="mx-auto mb-24 flex w-full max-w-[390px] flex-col space-y-4">
       <ContentHeader />
@@ -18,6 +22,4 @@ const ContentRoot = () => {
       </main>
     </div>
   );
-};
-
-export default ContentRoot;
+}

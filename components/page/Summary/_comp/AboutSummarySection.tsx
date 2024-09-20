@@ -5,8 +5,15 @@ import { useSummaryContents } from "@/components/api/queries";
 import { IMAGE_SERVER_URL } from "@/components/common/constants";
 import { Position } from "@/components/api/types";
 import SummaryMap from "./SummaryMap";
+import { useRouter } from "next/navigation";
 
 export default function AboutSummarySection({ id }: { id: number }) {
+  const router = useRouter();
+
+  const goToContentPage = (contentId: number) => {
+    router.push(`/summary/${id}/content/${contentId}`);
+  };
+
   const { data: { contents } = {} } = useSummaryContents(id);
 
   if (!contents) {
@@ -38,7 +45,12 @@ export default function AboutSummarySection({ id }: { id: number }) {
             <div className="flex flex-col space-y-4">
               <div className="flex justify-between">
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-heading">{content.title}</h3>
+                  <h3
+                    className="text-heading"
+                    onClick={() => goToContentPage(content.id)}
+                  >
+                    {content.title}
+                  </h3>
                   <h5 className="text-caption text-neutral-400">
                     place-type-1, place-type-2
                   </h5>
