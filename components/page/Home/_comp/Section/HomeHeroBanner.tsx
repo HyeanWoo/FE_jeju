@@ -21,7 +21,7 @@ const HomeHeroBanner = () => {
     setSignatureSummary(summaries[randomIndex]);
   }, [summaries]);
 
-  const tags = signatureSummary?.tag?.split(",") ?? [];
+  const tags = signatureSummary?.tags?.split(",") ?? [];
 
   const checkLastTag = (currentIndex: number, tagLength: number) => {
     return tagLength - 1 === currentIndex;
