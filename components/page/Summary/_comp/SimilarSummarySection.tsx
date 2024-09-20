@@ -11,6 +11,10 @@ export default function SimilarSummarySection({ id }: { id: number }) {
     return <div>loading...</div>;
   }
 
+  if (contents.length === 0) {
+    return <></>;
+  }
+
   const selectedContent = contents[0];
 
   const { data: recommends } = useTourContent({

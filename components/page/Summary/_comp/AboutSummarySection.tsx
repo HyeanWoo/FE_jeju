@@ -20,6 +20,10 @@ export default function AboutSummarySection({ id }: { id: number }) {
     return <div>loading...</div>;
   }
 
+  if (contents.length === 0) {
+    return <div>코스 정보가 없습니다</div>;
+  }
+
   const places: Position[] = contents?.map((content) => ({
     lat: Number(content.latitude),
     lng: Number(content.longitude),
