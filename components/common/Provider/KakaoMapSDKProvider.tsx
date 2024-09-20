@@ -1,6 +1,7 @@
 "use client";
 
 import React, { ReactNode, useEffect } from "react";
+import useStore from "../store/store";
 
 declare global {
   interface Window {
@@ -9,6 +10,8 @@ declare global {
 }
 
 export default function KakaoMap({ children }: { children: ReactNode }) {
+  const { setKakaoMapLoadTrue } = useStore();
+
   useEffect(() => {
     const kakaoMapScript = document.createElement("script");
     kakaoMapScript.async = false;
@@ -16,15 +19,7 @@ export default function KakaoMap({ children }: { children: ReactNode }) {
     document.head.appendChild(kakaoMapScript);
 
     const onLoadKakaoAPI = () => {
-      window.kakao.maps.load(() => {
-        var container = document.getElementById("kakao-map");
-        var options = {
-          center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-          level: 3,
-        };
-
-        new window.kakao.maps.Map(container, options);
-      });
+      setKakaoMapLoadTrue();
     };
 
     kakaoMapScript.addEventListener("load", onLoadKakaoAPI);

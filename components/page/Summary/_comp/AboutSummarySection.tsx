@@ -1,11 +1,22 @@
 "use client";
 
-import { useSummaryContents } from "@/components/api/queries";
 import Image from "next/image";
+import { useSummaryContents } from "@/components/api/queries";
 import { IMAGE_SERVER_URL } from "@/components/common/constants";
+import { Position } from "@/components/api/types";
+import SummaryMap from "./SummaryMap";
 
 export default function AboutSummarySection({ id }: { id: number }) {
   const { data: { contents } = {} } = useSummaryContents(id);
+
+  if (!contents) {
+    return <div>loading...</div>;
+  }
+
+  const places: Position[] = contents?.map((content) => ({
+    lat: Number(content.latitude),
+    lng: Number(content.longitude),
+  }));
 
   return (
     <section className="flex flex-col pb-6">
@@ -13,10 +24,7 @@ export default function AboutSummarySection({ id }: { id: number }) {
         <h2 className="text-heading text-neutral-900">코스 소개</h2>
       </div>
       <div className="-mx-5 pb-6">
-        <div
-          id="kakao-map"
-          className="h-[195px] w-[390px] sm:h-[372px] sm:w-[744px]"
-        ></div>
+        <SummaryMap places={places} />
       </div>
       <div className="flex flex-col space-y-6 pb-6">
         {contents?.map((content, index) => (

@@ -30,7 +30,7 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           alt="temp-course-main"
           width={744}
           height={563}
-          className="h-[563px] w-[744px] object-cover"
+          className="hidden h-[563px] w-[744px] object-cover sm:flex"
           style={{ width: 744, height: 563 }}
         />
         <Image

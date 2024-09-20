@@ -48,6 +48,7 @@ const HomeHeroBanner = () => {
           width={704}
           height={450}
           style={{ width: 704, height: 450 }}
+          className="hidden sm:flex"
         />
       </div>
       <div className="absolute bottom-5 left-5 flex flex-col space-y-2">
