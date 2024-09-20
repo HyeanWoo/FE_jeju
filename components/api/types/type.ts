@@ -23,7 +23,7 @@ export type Summary = {
   id: number;
   title: string;
   description: string;
-  tag: string;
+  tags: string;
   ottType: OttType;
   image: Image;
   contents: Content[];

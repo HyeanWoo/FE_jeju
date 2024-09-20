@@ -50,7 +50,7 @@ export default function AboutSummarySection({ id }: { id: number }) {
               <div className="flex justify-between">
                 <div className="flex flex-col space-y-2">
                   <h3
-                    className="text-heading"
+                    className="text-heading hover:cursor-pointer"
                     onClick={() => goToContentPage(content.id)}
                   >
                     {content.title}

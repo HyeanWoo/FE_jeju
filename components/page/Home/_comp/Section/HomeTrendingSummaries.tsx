@@ -36,9 +36,9 @@ const HomeTrendingSummaries = () => {
                 alt={summary.title}
                 width={252}
                 height={140}
-                className="rounded-[4px]"
+                className="h-[140px] w-[252px] rounded-[4px] object-cover"
               />
-              <Image
+              {/* <Image
                 // todo: 프로그램 로고가 추가된 후 변경
                 // src={summary.programLogo}
                 src="/image/temp/temp-trending-logo.svg"
@@ -46,13 +46,13 @@ const HomeTrendingSummaries = () => {
                 width={168}
                 height={40}
                 className="absolute left-[42px] top-[50px]"
-              />
+              /> */}
             </div>
             <div className="flex flex-col space-y-1">
               <h4 className="text-bodyBold text-neutral-800">
                 {summary.title}
               </h4>
-              <h5 className="text-caption truncate text-neutral-400">
+              <h5 className="truncate text-caption text-neutral-400">
                 {summary.description}
               </h5>
             </div>

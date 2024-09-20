@@ -8,7 +8,7 @@ import { useSummary } from "@/components/api/queries";
 export default function SummaryInfoSection({ id }: { id: number }) {
   const { data: { summary: summaryData } = {} } = useSummary(id);
 
-  const tags = summaryData?.tag?.split(",") ?? [];
+  const tags = summaryData?.tags?.split(",") ?? [];
 
   const checkLastTag = (currentIndex: number, tagLength: number) => {
     return tagLength - 1 === currentIndex;
@@ -33,7 +33,7 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           className="hidden h-[563px] w-[744px] object-cover sm:flex"
           style={{ width: 744, height: 563 }}
         />
-        <Image
+        {/* <Image
           // todo: 프로그램 로고가 추가된 후 변경
           src="/image/temp/temp-trending-logo.svg"
           alt="temp-trending-logo"
@@ -41,7 +41,7 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           height={40}
           className="absolute bottom-[26px] left-5"
           style={{ width: 168, height: 40 }}
-        />
+        /> */}
       </div>
       <div className="flex flex-col space-y-3">
         <h1 className="text-title3 text-neutral-900">{summaryData?.title}</h1>

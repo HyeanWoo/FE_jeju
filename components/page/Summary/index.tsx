@@ -45,7 +45,7 @@ export default async function SummaryRoot({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className="space-y mx-auto mb-24 flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
+      <div className="mx-auto mb-24 flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
         <SummaryHeader />
         <main className="container flex w-full flex-col px-5">
           <SummaryInfoSection id={id} />
