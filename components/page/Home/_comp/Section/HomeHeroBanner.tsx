@@ -3,8 +3,8 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSummaries } from "@/components/api/queries";
 import Image from "next/image";
-import { IMAGE_SERVER_URL } from "@/components/common/constants";
 import { Summary } from "@/components/api/types";
+import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 
 const HomeHeroBanner = () => {
   const { data } = useSummaries();
@@ -24,7 +24,7 @@ const HomeHeroBanner = () => {
   const tags = signatureSummary?.tags?.split(",") ?? [];
 
   const checkLastTag = (currentIndex: number, tagLength: number) => {
-    return tagLength - 1 === currentIndex;
+    return tagLength - 1 !== currentIndex;
   };
 
   if (!signatureSummary) {
@@ -34,21 +34,19 @@ const HomeHeroBanner = () => {
   return (
     <section className="container relative mx-auto">
       <div>
-        <Image
-          src={`${IMAGE_SERVER_URL}${signatureSummary?.image.imageUrl ?? ""}`}
+        <ThumbnailImage
+          src={signatureSummary?.image.imageUrl}
           alt="main-image"
           width={350}
           height={400}
-          style={{ width: 350, height: 400 }}
-          className="sm:hidden"
+          className="h-[400px] w-[350px] object-cover sm:hidden"
         />
-        <Image
-          src={`${IMAGE_SERVER_URL}${signatureSummary?.image.imageUrl ?? ""}`}
+        <ThumbnailImage
+          src={signatureSummary?.image.imageUrl}
           alt="main-image"
           width={704}
           height={450}
-          style={{ width: 704, height: 450 }}
-          className="hidden sm:flex"
+          className="hidden h-[450px] w-[704px] object-cover sm:flex"
         />
       </div>
       <div className="absolute bottom-5 left-5 flex flex-col space-y-2">
@@ -59,15 +57,15 @@ const HomeHeroBanner = () => {
           height={37}
           style={{ width: 133, height: 37 }}
         />
-        <h3 className="bg-black bg-opacity-25 text-bodyRegular text-white">
+        <h3 className="bg-black bg-opacity-70 text-bodyRegular text-white">
           {signatureSummary.title}
         </h3>
-        <div className="flew-col flex space-x-1.5 text-label text-white">
+        <div className="flew-col flex space-x-1.5 bg-black bg-opacity-70 text-label text-white">
           {tags.map((tag, index) => (
             <Fragment key={tag}>
-              <h5 className="text-label text-neutral-400">{tag}</h5>
+              <h5 className="text-label text-white">{tag}</h5>
               {checkLastTag(index, tags.length) && (
-                <span className="tag-divider-gray" />
+                <span className="tag-divider-white" />
               )}
             </Fragment>
           ))}

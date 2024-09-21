@@ -5,32 +5,13 @@ import { PropsWithChildren, ReactNode } from "react";
 
 interface SectionProps extends PropsWithChildren {
   title: string;
-  showMore?: boolean | string;
 }
 
-const Section = ({ title, children, showMore }: SectionProps) => {
-  const onClickMore = () => {
-    console.log(`${title} - 더보기 클릭됨`);
-  };
-
+const Section = ({ title, children }: SectionProps) => {
   return (
     <section className="container flex flex-col space-y-3">
       <div className="flex justify-between">
         <h2 className="text-heading text-neutral-900">{title}</h2>
-        {showMore && (
-          <button className="flex items-center" onClick={onClickMore}>
-            <h5 className="text-label text-neutral-400">
-              {typeof showMore === "string" ? showMore : "더보기"}
-            </h5>
-            <Image
-              src="/image/icon/arrow-drop-right-line.svg"
-              alt="arrow-drop-right-line"
-              width={24}
-              height={24}
-              style={{ width: 24, height: 24 }}
-            />
-          </button>
-        )}
       </div>
       {children}
     </section>

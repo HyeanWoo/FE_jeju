@@ -20,6 +20,14 @@
   margin-top: 7px;
 }
 
+.tag-divider-white {
+  background-color: #ffffff;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  margin-top: 7px;
+}
+
 #location-item-thumbnail {
   width: 60px;
   height: 60px;

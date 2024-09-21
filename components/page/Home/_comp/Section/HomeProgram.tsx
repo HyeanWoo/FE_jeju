@@ -5,7 +5,7 @@ import Section from "@/components/common/Section/Section";
 
 const HomeProgram = () => {
   return (
-    <Section title="방송으로 제주 코스 찾기" showMore={true}>
+    <Section title="방송으로 제주 코스 찾기">
       <Section.ItemList
         items={programs}
         renderItem={(program, index) => (

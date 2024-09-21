@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { Fragment } from "react";
-import { IMAGE_SERVER_URL } from "@/components/common/constants";
 import { useSummary } from "@/components/api/queries";
+import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 
 export default function SummaryInfoSection({ id }: { id: number }) {
   const { data: { summary: summaryData } = {} } = useSummary(id);
@@ -11,27 +11,25 @@ export default function SummaryInfoSection({ id }: { id: number }) {
   const tags = summaryData?.tags?.split(",") ?? [];
 
   const checkLastTag = (currentIndex: number, tagLength: number) => {
-    return tagLength - 1 === currentIndex;
+    return tagLength - 1 !== currentIndex;
   };
 
   return (
     <section className="flex flex-col space-y-6 pb-10">
       <div className="relative -mx-5 flex">
-        <Image
-          src={`${IMAGE_SERVER_URL}${summaryData?.image.imageUrl ?? ""}`}
+        <ThumbnailImage
+          src={summaryData?.image.imageUrl ?? ""}
           alt="temp-course-main"
           width={390}
           height={295}
           className="h-[295px] w-[390px] object-cover sm:hidden"
-          style={{ width: 390, height: 295 }}
         />
-        <Image
-          src={`${IMAGE_SERVER_URL}${summaryData?.image.imageUrl ?? ""}`}
+        <ThumbnailImage
+          src={summaryData?.image.imageUrl ?? ""}
           alt="temp-course-main"
           width={744}
           height={563}
           className="hidden h-[563px] w-[744px] object-cover sm:flex"
-          style={{ width: 744, height: 563 }}
         />
         {/* <Image
           // todo: 프로그램 로고가 추가된 후 변경

@@ -4,7 +4,7 @@ import { otherSpots } from "@/lib/dummyData";
 
 const HomeSpotsInJeju = () => {
   return (
-    <Section title="제주스팟 모아보기" showMore={true}>
+    <Section title="제주스팟 모아보기">
       <Section.ItemList
         items={otherSpots}
         renderItem={(spot, index) => (

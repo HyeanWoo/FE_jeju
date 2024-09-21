@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useSummaryContents } from "@/components/api/queries";
-import { IMAGE_SERVER_URL } from "@/components/common/constants";
 import { Position } from "@/components/api/types";
 import SummaryMap from "./SummaryMap";
 import { useRouter } from "next/navigation";
+import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 
 export default function AboutSummarySection({ id }: { id: number }) {
   const router = useRouter();
@@ -46,7 +46,7 @@ export default function AboutSummarySection({ id }: { id: number }) {
               </span>
               <div className="h-full w-0.5 border border-neutral-100"></div>
             </div>
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-grow flex-col space-y-4">
               <div className="flex justify-between">
                 <div className="flex flex-col space-y-2">
                   <h3
@@ -56,7 +56,7 @@ export default function AboutSummarySection({ id }: { id: number }) {
                     {content.title}
                   </h3>
                   <h5 className="text-caption text-neutral-400">
-                    place-type-1, place-type-2
+                    {content.category}
                   </h5>
                   <h4 className="w-[260px] truncate text-label text-neutral-700">
                     {content.description}
@@ -74,14 +74,13 @@ export default function AboutSummarySection({ id }: { id: number }) {
               </div>
               <div className="flex space-x-2 overflow-x-auto">
                 {content.imageList.map((imageItem) => (
-                  <Image
+                  <ThumbnailImage
                     key={imageItem.id}
-                    src={`${IMAGE_SERVER_URL}${imageItem?.imageUrl ?? ""}`}
+                    src={imageItem?.imageUrl}
                     alt={imageItem.imageName}
                     width={120}
                     height={160}
                     className="h-40 w-[120px] flex-none rounded-lg object-cover"
-                    style={{ width: 120, height: 160 }}
                   />
                 ))}
               </div>

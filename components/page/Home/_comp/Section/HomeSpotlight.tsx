@@ -5,7 +5,7 @@ import Section from "@/components/common/Section/Section";
 
 const HomeSpotlight = () => {
   return (
-    <Section title="환승연애3에서 가장 주목받은 제주 스팟" showMore={false}>
+    <Section title="환승연애3에서 가장 주목받은 제주 스팟">
       <div className="flex flex-col space-y-3 rounded-[10px] bg-gradient-to-b from-main-500 to-main-300 p-4">
         <div className="flex space-x-3">
           <Image

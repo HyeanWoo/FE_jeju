@@ -1,11 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Section from "@/components/common/Section/Section";
 import { useSummaries } from "@/components/api/queries";
-import { IMAGE_SERVER_URL } from "@/components/common/constants";
+import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 
 const HomeTrendingSummaries = () => {
   const route = useRouter();
@@ -21,18 +20,18 @@ const HomeTrendingSummaries = () => {
   };
 
   return (
-    <Section title="요즘 핫한 코스" showMore={true}>
+    <Section title="요즘 핫한 코스">
       <Section.ItemList
         items={summaries}
         renderItem={(summary, index) => (
           <div
             key={index + summary.title}
-            className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
+            className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2 hover:cursor-pointer"
             onClick={() => goToSummaryPage(summary.id)}
           >
             <div className="relative">
-              <Image
-                src={`${IMAGE_SERVER_URL}${summary?.image?.imageUrl ?? ""}`}
+              <ThumbnailImage
+                src={summary?.image?.imageUrl}
                 alt={summary.title}
                 width={252}
                 height={140}

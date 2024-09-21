@@ -30,16 +30,6 @@ export default function SimilarSummarySection({ id }: { id: number }) {
     <section className="container flex flex-col space-y-3 pt-6">
       <div className="flex justify-between">
         <h2 className="text-heading text-neutral-900">추천 코스</h2>
-        <button className="flex items-center">
-          <h5 className="text-sm leading-[17.5px] text-neutral-400">더보기</h5>
-          <Image
-            src="/image/icon/arrow-drop-right-line.svg"
-            alt="arrow-drop-right-line"
-            width={24}
-            height={24}
-            style={{ width: 24, height: 24 }}
-          />
-        </button>
       </div>
       <div className="flex w-full space-x-3 overflow-x-auto">
         {recommends.map((course) => (
@@ -48,7 +38,7 @@ export default function SimilarSummarySection({ id }: { id: number }) {
             className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
           >
             <Image
-              src={course.firstimage}
+              src={course.firstimage || "/image/image-placeholder.svg"}
               alt={course.title}
               width={252}
               height={140}

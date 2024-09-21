@@ -5,7 +5,7 @@ import Section from "@/components/common/Section/Section";
 
 const HomeLatestSummaries = () => {
   return (
-    <Section title="최신 등록된 코스" showMore={true}>
+    <Section title="최신 등록된 코스">
       <Section.ItemList
         items={trendingCourses}
         renderItem={(summary, index) => (
