@@ -6,6 +6,16 @@ import { useRouter } from "next/navigation";
 const Footer = () => {
   const router = useRouter();
 
+  const onClickMyPage = () => {
+    const userId = sessionStorage.getItem("userId");
+
+    if (userId) {
+      router.push("/mypage");
+    } else {
+      router.push("/login");
+    }
+  };
+
   return (
     <nav className="container fixed bottom-0 left-[calc((100vw-390px)/2)] mx-auto flex h-[60px] w-full max-w-[390px] justify-around border-t border-[#F0F0F0] bg-white sm:left-[calc((100vw-744px)/2)] sm:max-w-[744px]">
       <div className="flex flex-col items-center justify-center space-y-0.5">
@@ -40,7 +50,7 @@ const Footer = () => {
       </div>
       <div
         className="flex flex-col items-center justify-center space-y-0.5"
-        onClick={() => router.push("/login")}
+        onClick={onClickMyPage}
       >
         <Image
           src="/image/icon/mypage.svg"
