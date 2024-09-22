@@ -34,25 +34,15 @@ const HomeHeroBanner = () => {
   return (
     <section className="container relative mx-auto">
       <div>
-<<<<<<< Updated upstream
         <ThumbnailImage
           src={signatureSummary?.image.imageUrl}
-=======
-        <Image
-          src={`${IMAGE_SERVER_URL}${signatureSummary?.image?.imageUrl ?? ""}`}
->>>>>>> Stashed changes
           alt="main-image"
           width={350}
           height={400}
           className="h-[400px] w-[350px] object-cover sm:hidden"
         />
-<<<<<<< Updated upstream
         <ThumbnailImage
           src={signatureSummary?.image.imageUrl}
-=======
-        <Image
-          src={`${IMAGE_SERVER_URL}${signatureSummary?.image?.imageUrl ?? ""}`}
->>>>>>> Stashed changes
           alt="main-image"
           width={704}
           height={450}

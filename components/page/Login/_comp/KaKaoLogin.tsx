@@ -9,6 +9,11 @@ interface KakaoLoginButtonProps {}
 
 const KakaoLoginButton = (props: KakaoLoginButtonProps) => {
   const searchParams = useSearchParams();
+  const redirect_uri =
+    typeof window !== "undefined"
+      ? `https://frog-nu.vercel.app${window.location.pathname}`
+      : "";
+
   const { push } = useRouter();
 
   const _code = useMemo(() => {
@@ -17,14 +22,14 @@ const KakaoLoginButton = (props: KakaoLoginButtonProps) => {
 
   const { loginMutation, userInfoQuery } = useKakaoLogin({
     client_id: "d189c92b8d450da84be516fa5364123b",
-    redirect_uri: `/${location.pathname}`,
+    redirect_uri: redirect_uri,
     code: _code,
   });
 
   const { mutate } = useUpdateSignUp();
 
   const onClick = () => {
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${"d189c92b8d450da84be516fa5364123b"}&redirect_uri=${`/${location.pathname}`}&response_type=code`;
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${"d189c92b8d450da84be516fa5364123b"}&redirect_uri=${redirect_uri}&response_type=code`;
     window.location.href = KAKAO_AUTH_URL;
   };
 
