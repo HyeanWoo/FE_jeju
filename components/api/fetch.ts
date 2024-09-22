@@ -1,15 +1,5 @@
-<<<<<<< Updated upstream
 import { Position } from "./types";
-=======
-// types.ts
-export interface TokenResponse {
-  access_token: string;
-  token_type: string;
-  expires_in: number;
-  refresh_token: string;
-  scope: string;
-}
->>>>>>> Stashed changes
+import { KakaoTokenResponse } from "./types/type";
 
 export const fetchSummary = async (id: number) => {
   const response = await fetch(
@@ -86,7 +76,7 @@ export const putKaKaoLogin = async (
   client_id: string,
   redirect_uri: string,
   code: string,
-): Promise<TokenResponse> => {
+): Promise<KakaoTokenResponse> => {
   const params = new URLSearchParams({
     grant_type: "authorization_code",
     client_id,
@@ -111,7 +101,7 @@ export const putKaKaoLogin = async (
       );
     }
 
-    const data: TokenResponse = await response.json();
+    const data: KakaoTokenResponse = await response.json();
     return data;
   } catch (error) {
     console.error("Error in putKaKaoLogin:", error);
