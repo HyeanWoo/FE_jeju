@@ -1,3 +1,4 @@
+"use client";
 import Logo from "@/components/common/Icon/Logo";
 import KakaoLoginButton from "./_comp/KaKaoLogin";
 

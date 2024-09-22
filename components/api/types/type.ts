@@ -52,7 +52,6 @@ export type ContentsResponse = {
   contents: Content[];
 };
 
-<<<<<<< Updated upstream
 export type Position = {
   lat: number;
   lng: number;
@@ -81,7 +80,6 @@ export type TourContent = {
   tel: string;
   title: string;
 };
-=======
 export interface KakaoTokenResponse {
   access_token: string;
   token_type: string;
@@ -93,4 +91,3 @@ export interface KakaoTokenResponse {
 export interface KakaoUserInfo {
   id: number;
 }
->>>>>>> Stashed changes
