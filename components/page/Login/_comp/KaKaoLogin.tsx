@@ -10,9 +10,7 @@ interface KakaoLoginButtonProps {}
 const KakaoLoginButton = (props: KakaoLoginButtonProps) => {
   const searchParams = useSearchParams();
   const redirect_uri =
-    typeof window !== "undefined"
-      ? `https://frog-nu.vercel.app${window.location.pathname}`
-      : "";
+    typeof window !== "undefined" ? `https://frog-nu.vercel.app/login` : "";
 
   const { push } = useRouter();
 
