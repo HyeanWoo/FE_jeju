@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { useSummary } from "@/components/api/queries";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
+import CourseProgress from "./CourseProgress";
+import CtaButtonGroup from "./CtaButtonGroup";
 
 export default function SummaryInfoSection({ id }: { id: number }) {
   const { data: { summary: summaryData } = {} } = useSummary(id);
@@ -57,22 +59,8 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           {summaryData?.description}
         </h3>
       </div>
-      <div className="flex space-x-3">
-        <button className="flex w-[290px] flex-1 shrink-0 items-center justify-center rounded-lg border py-[11px]">
-          <span className="text-bodyBold text-main-500">
-            방송에 나온 다른 코스보기
-          </span>
-        </button>
-        <button className="flex flex-none rounded-lg border p-[11px]">
-          <Image
-            src="/image/icon/heart-3-line-pink.svg"
-            alt="like-button"
-            width={24}
-            height={24}
-            style={{ width: 24, height: 24 }}
-          />
-        </button>
-      </div>
+      <CourseProgress />
+      <CtaButtonGroup />
     </section>
   );
 }
