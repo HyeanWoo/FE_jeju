@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer";
 import AccountSettings from "./_comp/AccountSettings";
 import Header from "./_comp/Header";
 import ImageSection from "./_comp/ImageSection";
@@ -20,6 +21,7 @@ const MyPage = () => (
           description="변경할 설정을 입력하세요"
         />
       </main>
+      <Footer />
     </div>
   </div>
 );

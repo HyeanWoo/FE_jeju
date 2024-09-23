@@ -49,7 +49,7 @@ const Footer = () => {
         <h3 className="text-[11px]">북마크</h3>
       </div>
       <div
-        className="flex flex-col items-center justify-center space-y-0.5"
+        className="flex cursor-pointer flex-col items-center justify-center space-y-0.5"
         onClick={onClickMyPage}
       >
         <Image
