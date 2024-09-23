@@ -18,8 +18,8 @@ export default function CourseProgress() {
     setProgress((courseCount / totalCourse) * 100);
   };
 
-  const progressLeft = `h-[6px] w-[${progress}%] rounded-full bg-main-500`;
-  const _ = "w-[20%] w-[40%] w-[60%] w-[80%]";
+  const progressLeft = `h-[6px] w-[${progress}%] rounded-full bg-main-500 transition-all duration-300`;
+  const _ = "w-[0%] w-[20%] w-[40%] w-[60%] w-[80%] w-[100%]";
 
   return (
     <div className="flex w-full flex-col space-y-5 rounded-md bg-neutral-50 p-4">
