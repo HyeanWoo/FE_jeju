@@ -26,11 +26,11 @@ export default function SimilarContent({ content }: { content: Content }) {
             className="flex w-[140px] max-w-[140px] flex-none flex-col space-y-2"
           >
             <Image
-              src={course.firstimage}
+              src={course.firstimage || "/image/image-placeholder.svg"}
               alt={course.title}
               width={140}
               height={140}
-              className="h-[140px] w-[140px] rounded-[4px]"
+              className="h-[140px] w-[140px] rounded-[4px] object-cover"
             />
             <div className="flex flex-col space-y-1">
               <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>

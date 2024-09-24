@@ -16,10 +16,7 @@ const MyPage = () => (
           overlayTitle="호동캠핑존"
           overlaySubtitle="콜라자바"
         />
-        <AccountSettings
-          title="계정 설정"
-          description="변경할 설정을 입력하세요"
-        />
+        <AccountSettings />
       </main>
       <Footer />
     </div>

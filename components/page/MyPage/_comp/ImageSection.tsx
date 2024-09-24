@@ -11,10 +11,6 @@ const ImageSection = ({ src, alt, overlayTitle, overlaySubtitle }: any) => (
         className="rounded-lg"
       />
     </div>
-    <div className="rounded-lg bg-white bg-opacity-70 p-4 text-center opacity-100 shadow-md">
-      <h3 className="text-lg font-semibold">{overlayTitle}</h3>
-      <p>{overlaySubtitle}</p>
-    </div>
   </div>
 );
 

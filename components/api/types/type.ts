@@ -7,7 +7,7 @@ enum OttType {
   WATCHA = "WATCHA",
 }
 
-type Image = {
+export type Image = {
   createDate: Date;
   updateDate: Date;
   id: number;

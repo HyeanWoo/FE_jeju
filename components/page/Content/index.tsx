@@ -4,6 +4,7 @@ import Divider from "@/components/common/Divider";
 import { ContentHeader, ContentInfo, SimilarContent } from "./_comp";
 import { useSummaryContents } from "@/components/api/queries";
 import { useMemo } from "react";
+import Footer from "@/components/shared/Footer";
 
 export default function ContentRoot({
   params,
@@ -37,6 +38,7 @@ export default function ContentRoot({
         <Divider />
         <SimilarContent content={content} />
       </main>
+      <Footer />
     </div>
   );
 }

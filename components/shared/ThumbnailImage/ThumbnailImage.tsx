@@ -8,6 +8,8 @@ type ThumbnailImageProps = {
   className?: string | undefined;
 };
 
+const DEFAULT_PLACEHOLDER = "/image/image-placeholder.svg";
+
 export default function ThumbnailImage({
   alt,
   src,
@@ -15,7 +17,10 @@ export default function ThumbnailImage({
   height,
   width,
 }: ThumbnailImageProps) {
-  const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${src}`;
+  const imageUrl =
+    src === DEFAULT_PLACEHOLDER
+      ? DEFAULT_PLACEHOLDER
+      : `${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${src}`;
   return (
     <Image
       src={imageUrl}

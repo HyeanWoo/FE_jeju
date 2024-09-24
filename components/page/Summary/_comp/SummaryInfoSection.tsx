@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Fragment } from "react";
 import { useSummary } from "@/components/api/queries";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
@@ -31,7 +30,7 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           alt="temp-course-main"
           width={744}
           height={563}
-          className="hidden h-[563px] w-[744px] object-cover sm:flex"
+          className="hidden h-[563px] w-[744px] object-cover sm:block"
         />
         {/* <Image
           // todo: 프로그램 로고가 추가된 후 변경
