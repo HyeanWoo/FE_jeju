@@ -91,3 +91,11 @@ export interface KakaoTokenResponse {
 export interface KakaoUserInfo {
   id: number;
 }
+
+export interface UserResponse {
+  createDate: string;
+  updateDate: string;
+  id: number;
+  email: string;
+  nickname: string;
+}

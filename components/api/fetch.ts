@@ -1,5 +1,5 @@
 import { Position } from "./types";
-import { KakaoTokenResponse } from "./types/type";
+import { KakaoTokenResponse, UserResponse } from "./types/type";
 
 export const fetchSummary = async (id: number) => {
   const response = await fetch(
@@ -134,16 +134,15 @@ export const updateSignUp = async (
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/member/save`,
     {
-      method: "POST", // POST 메소드 사용
+      method: "POST",
       headers: {
-        "Content-Type": "application/json", // JSON 형식 지정
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // 객체를 JSON 문자열로 변환
         nickname,
         email: userId,
       }),
-      cache: "no-store", // 캐시 무효화
+      cache: "no-store",
     },
   );
 
@@ -153,4 +152,24 @@ export const updateSignUp = async (
   }
 
   return response.json() as Promise<SignUpResponse>;
+};
+
+export const getUser = async (userId: number): Promise<UserResponse> => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API_V1}/member/${userId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`Error ${response.status}: ${errorData.message}`);
+  }
+
+  return response.json();
 };

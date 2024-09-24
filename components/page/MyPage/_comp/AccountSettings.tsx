@@ -1,8 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 const AccountSettings = () => {
+  const router = useRouter();
   const onClickLogout = () => {
     sessionStorage.clear();
+    router.push("/");
   };
 
   return (

@@ -39,10 +39,7 @@ const Footer = () => {
         />
         <h3 className="text-[11px]">홈</h3>
       </button>
-      <button
-        className="flex flex-col items-center justify-center space-y-0.5"
-        onClick={onClickBookmark}
-      >
+      <button className="flex flex-col items-center justify-center space-y-0.5">
         <Image
           src="/image/icon/place.svg"
           alt="place"
@@ -52,7 +49,10 @@ const Footer = () => {
         />
         <h3 className="text-[11px]">플레이스</h3>
       </button>
-      <button className="flex flex-col items-center justify-center space-y-0.5">
+      <button
+        className="flex flex-col items-center justify-center space-y-0.5"
+        onClick={onClickBookmark}
+      >
         <Image
           src="/image/icon/bookmark.svg"
           alt="bookmark"

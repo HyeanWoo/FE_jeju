@@ -39,13 +39,14 @@ const KakaoLoginButton = (props: KakaoLoginButtonProps) => {
 
   useEffect(() => {
     if (userInfoQuery.data) {
+      const nickname = Math.random() + "";
       sessionStorage.setItem("userId", userInfoQuery.data?.id);
       sessionStorage.setItem(
         "nickname",
-        userInfoQuery.data?.nickname || "박종찬",
+        userInfoQuery.data?.nickname || nickname,
       );
       mutate({
-        nickname: userInfoQuery.data?.nickname || "박종찬",
+        nickname: userInfoQuery.data?.nickname || nickname,
         userId: userInfoQuery.data?.id,
       });
       push("/mypage");

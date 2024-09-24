@@ -1,26 +1,34 @@
 "use client";
 
+import { getUser } from "@/components/api/fetch";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 const UserInfo = () => {
-  const [name, setName] = useState<string | null>(null);
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    const nickname = sessionStorage.getItem("nickname");
-    if (nickname) {
-      setName(nickname);
+    if (typeof window !== "undefined") {
+      const id = sessionStorage?.getItem("userId") as string;
+      setUserId(id);
     }
   }, []);
 
-  if (name === null) {
+  const { data } = useQuery({
+    queryKey: ["getUser", userId],
+    queryFn: () => getUser(Number(userId)),
+    enabled: !!userId,
+  });
+
+  if (!data) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="mb-4 flex items-center space-x-4">
       <div>
-        <h2 className="text-lg font-semibold">{name}님</h2>
-        <p className="text-gray-500">{name} · 가입일 2024-09-23</p>
+        <h2 className="text-lg font-semibold">{data.nickname}님</h2>
+        <p className="text-gray-500">{data.createDate.split("T")[0]}</p>
       </div>
     </div>
   );
