@@ -34,12 +34,10 @@ export default function ContentItem({
         <div className="flex flex-grow flex-col space-y-4">
           <div className="flex justify-between">
             <div
-              className="flex flex-col space-y-2"
+              className="flex flex-col space-y-2 hover:cursor-pointer"
               onClick={() => goToContentPage(content.id)}
             >
-              <h3 className="text-heading hover:cursor-pointer">
-                {content.title}
-              </h3>
+              <h3 className="text-heading">{content.title}</h3>
               <h5 className="text-caption text-neutral-400">
                 {content.category}
               </h5>

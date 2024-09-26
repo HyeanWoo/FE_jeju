@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const ContentHeader = () => {
@@ -12,18 +13,20 @@ const ContentHeader = () => {
   return (
     <header className="flex items-center bg-white px-5 py-3">
       <button className="mr-3" onClick={goBack}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="25"
-          height="25"
-          viewBox="0 0 25 25"
-          fill="none"
-        >
-          <path
-            d="M11.1004 12.4113L16.0502 17.361L14.636 18.7752L8.27197 12.4113L14.636 6.04736L16.0502 7.46157L11.1004 12.4113Z"
-            fill="#F43C60"
-          />
-        </svg>
+        <Image
+          src="/image/icon/angle-bracket-left-black2.svg"
+          alt="search-btn"
+          width={24}
+          height={24}
+          className="h-6 w-6 sm:hidden"
+        />
+        <Image
+          src="/image/icon/angle-bracket-left-black2.svg"
+          alt="search-btn"
+          width={32}
+          height={32}
+          className="hidden h-8 w-8 sm:block"
+        />
       </button>
     </header>
   );
