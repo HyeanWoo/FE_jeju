@@ -14,8 +14,8 @@ export default function SummaryHeader() {
     <header className="flex h-12 items-center px-[18px]">
       <button onClick={goBack}>
         <Image
-          src="/image/icon/angle-bracket-left.svg"
-          alt="search-btn"
+          src="/image/icon/angle-bracket-left-black.svg"
+          alt="go-back-btn"
           width={32}
           height={32}
           style={{ width: 32, height: 32 }}

@@ -39,14 +39,14 @@ const HomeHeroBanner = () => {
           alt="main-image"
           width={350}
           height={400}
-          className="h-[400px] w-[350px] object-cover sm:hidden"
+          className="h-[400px] w-[350px] rounded-lg object-cover sm:hidden"
         />
         <ThumbnailImage
           src={signatureSummary?.image.imageUrl}
           alt="main-image"
           width={704}
           height={450}
-          className="hidden h-[450px] w-[704px] object-cover sm:flex"
+          className="hidden h-[450px] w-[704px] rounded-lg object-cover sm:flex"
         />
       </div>
       <div className="absolute bottom-5 left-5 flex flex-col space-y-2">

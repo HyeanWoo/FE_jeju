@@ -5,15 +5,7 @@ import {
 } from "@tanstack/react-query";
 import HomeHeader from "./_comp/HomeHeader";
 import Footer from "@/components/shared/Footer";
-import {
-  HomeHeroBanner,
-  HomeLatestSummaries,
-  HomeLocation,
-  HomeProgram,
-  HomeSpotlight,
-  HomeSpotsInJeju,
-  HomeTrendingSummaries,
-} from "./_comp/Section";
+import { HomeHeroBanner, HomeTrendingSummaries } from "./_comp/Section";
 
 import { fetchSummaries } from "@/components/api/fetch";
 import {
@@ -39,21 +31,19 @@ export default async function HomeRoot() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className="relative">
-        <main className="mx-auto mb-24 flex w-full max-w-[390px] flex-col space-y-3 px-5 sm:max-w-[744px]">
-          <HomeHeader />
-          <div className="container flex flex-col space-y-[50px]">
-            <HomeHeroBanner />
-            {/* <HomeLocation /> */}
-            <HomeTrendingSummaries />
-            {/* <HomeProgram /> */}
-            {/* <HomeSpotlight /> */}
-            {/* <HomeLatestSummaries /> */}
-            {/* <HomeSpotsInJeju /> */}
-          </div>
-        </main>
-        <Footer />
-      </div>
+      <main className="mx-auto mb-24 flex w-full max-w-[390px] flex-col px-5 sm:max-w-[744px]">
+        <HomeHeader />
+        <div className="container flex flex-col space-y-[50px]">
+          <HomeHeroBanner />
+          {/* <HomeLocation /> */}
+          <HomeTrendingSummaries />
+          {/* <HomeProgram /> */}
+          {/* <HomeSpotlight /> */}
+          {/* <HomeLatestSummaries /> */}
+          {/* <HomeSpotsInJeju /> */}
+        </div>
+      </main>
+      <Footer />
     </HydrationBoundary>
   );
 }

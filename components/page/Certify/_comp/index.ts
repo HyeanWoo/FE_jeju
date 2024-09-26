@@ -1,2 +1,2 @@
 export { default as CertifyHeader } from "./CertifyHeader";
-export { default as UploadPhotoButton } from "./UploadPhotoButton";
+export { default as UploadPhotoFunnel } from "./UploadPhotoFunnel";
