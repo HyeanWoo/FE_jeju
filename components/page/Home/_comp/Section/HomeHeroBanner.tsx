@@ -32,7 +32,7 @@ const HomeHeroBanner = () => {
   }
 
   return (
-    <section className="container relative mx-auto">
+    <section className="container relative z-0 mx-auto">
       <div>
         <ThumbnailImage
           src={signatureSummary?.image.imageUrl}
@@ -49,18 +49,19 @@ const HomeHeroBanner = () => {
           className="hidden h-[450px] w-[704px] rounded-lg object-cover sm:flex"
         />
       </div>
-      <div className="absolute bottom-5 left-5 flex flex-col space-y-2">
-        <Image
+      <div className="absolute left-0 top-0 z-10 h-full w-full rounded-lg bg-gradient-to-b from-[#00000000] to-[#0000004D]" />
+      <div className="absolute bottom-5 left-5 z-20 flex flex-col space-y-2">
+        {/* <Image
           src="/image/logo/temp-main-program-logo.svg"
           alt="temp-main-program-logo"
           width={133}
           height={37}
           style={{ width: 133, height: 37 }}
-        />
-        <h3 className="bg-black bg-opacity-70 text-bodyRegular text-white">
+        /> */}
+        <h3 className="text-bodyRegular text-white">
           {signatureSummary.title}
         </h3>
-        <div className="flew-col flex space-x-1.5 bg-black bg-opacity-70 text-label text-white">
+        <div className="flew-col flex space-x-1.5 text-label text-white">
           {tags.map((tag, index) => (
             <Fragment key={tag}>
               <h5 className="text-label text-white">{tag}</h5>

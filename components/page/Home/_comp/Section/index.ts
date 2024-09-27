@@ -5,3 +5,4 @@ export { default as HomeProgram } from "./HomeProgram";
 export { default as HomeSpotlight } from "./HomeSpotlight";
 export { default as HomeSpotsInJeju } from "./HomeSpotsInJeju";
 export { default as HomeTrendingSummaries } from "./HomeTrendingSummaries";
+export { default as HomeTouringSummaries } from "./HomeTouringSummaries";

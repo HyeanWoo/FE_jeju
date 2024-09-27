@@ -19,7 +19,6 @@ const MyPage = () => {
           />
           <AccountSettings />
         </main>
-        <Footer />
       </div>
     </div>
   );

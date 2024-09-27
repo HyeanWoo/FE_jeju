@@ -3,13 +3,15 @@ import { useState } from "react";
 
 export default function CourseProgress() {
   const [currentCourse, setCurrentCourse] = useState(0);
-  const [totalCourse, setTotalCourse] = useState(5);
-  const [progress, setProgress] = useState((currentCourse / totalCourse) * 100);
+  const [totalCourse, setTotalCourse] = useState(3);
+  const [progress, setProgress] = useState(
+    Math.round((currentCourse / totalCourse) * 100),
+  );
 
   const certifyCourse = () => {
     const courseCount = currentCourse + 1;
     setCurrentCourse(courseCount);
-    setProgress((courseCount / totalCourse) * 100);
+    setProgress(Math.round((courseCount / totalCourse) * 100));
   };
 
   const goToAlbumPage = () => {
@@ -18,7 +20,6 @@ export default function CourseProgress() {
   };
 
   const progressLeft = `h-[6px] w-[${progress}%] rounded-full bg-main-500 transition-all duration-300`;
-  const _ = "w-[0%] w-[20%] w-[40%] w-[60%] w-[80%] w-[100%]";
 
   const isCourseFinished = totalCourse === currentCourse;
 

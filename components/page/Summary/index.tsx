@@ -54,7 +54,6 @@ export default async function SummaryRoot({
           <Divider />
           <SimilarSummarySection id={id} />
         </main>
-        <Footer />
       </div>
     </HydrationBoundary>
   );

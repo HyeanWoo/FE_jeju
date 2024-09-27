@@ -38,7 +38,6 @@ export default function ContentRoot({
         <Divider />
         <SimilarContent content={content} />
       </main>
-      <Footer />
     </div>
   );
 }

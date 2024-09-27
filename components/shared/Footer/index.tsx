@@ -1,82 +1,23 @@
-"use client";
-
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
-const Footer = () => {
-  const router = useRouter();
-
-  const onClickHome = () => {
-    router.push("/");
-  };
-
-  const onClickBookmark = () => {
-    router.push("/bookmark");
-  };
-
-  const onClickMyPage = () => {
-    const userId = sessionStorage.getItem("userId");
-
-    if (userId) {
-      router.push("/mypage");
-    } else {
-      router.push("/login");
-    }
-  };
-
+export default function Footer() {
   return (
-    <nav className="container fixed bottom-0 left-[calc((100vw-390px)/2)] mx-auto flex h-[60px] w-full max-w-[390px] justify-around border-t border-[#F0F0F0] bg-white sm:left-[calc((100vw-744px)/2)] sm:max-w-[744px]">
-      <button
-        className="flex flex-col items-center justify-center space-y-0.5"
-        onClick={onClickHome}
-      >
-        <Image
-          src="/image/icon/home.svg"
-          alt="home"
-          width={28}
-          height={28}
-          style={{ width: 28, height: 28 }}
-        />
-        <h3 className="text-[11px]">홈</h3>
-      </button>
-      <button className="flex flex-col items-center justify-center space-y-0.5">
-        <Image
-          src="/image/icon/place.svg"
-          alt="place"
-          width={28}
-          height={28}
-          style={{ width: 28, height: 28 }}
-        />
-        <h3 className="text-[11px]">플레이스</h3>
-      </button>
-      <button
-        className="flex flex-col items-center justify-center space-y-0.5"
-        onClick={onClickBookmark}
-      >
-        <Image
-          src="/image/icon/bookmark.svg"
-          alt="bookmark"
-          width={28}
-          height={28}
-          style={{ width: 28, height: 28 }}
-        />
-        <h3 className="text-[11px]">북마크</h3>
-      </button>
-      <button
-        className="flex cursor-pointer flex-col items-center justify-center space-y-0.5"
-        onClick={onClickMyPage}
-      >
-        <Image
-          src="/image/icon/mypage.svg"
-          alt="mypage"
-          width={28}
-          height={28}
-          style={{ width: 28, height: 28 }}
-        />
-        <h3 className="text-[11px]">마이페이지</h3>
-      </button>
-    </nav>
+    <footer className="mx-auto flex h-[162px] w-full max-w-[350px] flex-col items-center space-y-[10px] bg-neutral-50 pb-[17px] pt-7 sm:max-w-[704px]">
+      <Image
+        src="/image/logo/logo-background.svg"
+        alt="logo"
+        width={162}
+        height={30}
+        className="h-[30px] w-[162px]"
+      />
+      <div className="flex space-x-2">
+        <p className="text-label">트래블컷 제주</p>
+        <p className="text-label">|</p>
+        <p className="text-label">팀 프로그 제작</p>
+      </div>
+      <p className="text-label text-[#86888b]">
+        © 2024 관광데이터 활용 공모전
+      </p>
+    </footer>
   );
-};
-
-export default Footer;
+}

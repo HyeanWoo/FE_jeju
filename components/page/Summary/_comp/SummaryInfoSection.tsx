@@ -4,7 +4,6 @@ import { Fragment } from "react";
 import { useSummary } from "@/components/api/queries";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 import CourseProgress from "./CourseProgress";
-import CtaButtonGroup from "./CtaButtonGroup";
 
 export default function SummaryInfoSection({ id }: { id: number }) {
   const { data: { summary: summaryData } = {} } = useSummary(id);
@@ -59,7 +58,6 @@ export default function SummaryInfoSection({ id }: { id: number }) {
         </h3>
       </div>
       <CourseProgress />
-      <CtaButtonGroup />
     </section>
   );
 }

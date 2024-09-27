@@ -4,14 +4,17 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import HomeHeader from "./_comp/HomeHeader";
-import Footer from "@/components/shared/Footer";
-import { HomeHeroBanner, HomeTrendingSummaries } from "./_comp/Section";
-
+import {
+  HomeHeroBanner,
+  HomeTouringSummaries,
+  HomeTrendingSummaries,
+} from "./_comp/Section";
 import { fetchSummaries } from "@/components/api/fetch";
 import {
   REACT_QUERY_GC_TIME,
   REACT_QUERY_STALE_TIME,
 } from "@/components/common/constants";
+import Footer from "@/components/shared/Footer";
 
 export default async function HomeRoot() {
   const queryClient = new QueryClient({
@@ -31,11 +34,11 @@ export default async function HomeRoot() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <main className="mx-auto mb-24 flex w-full max-w-[390px] flex-col px-5 sm:max-w-[744px]">
+      <main className="mx-auto mb-[50px] flex w-full max-w-[390px] flex-col px-5 sm:max-w-[744px]">
         <HomeHeader />
         <div className="container flex flex-col space-y-[50px]">
           <HomeHeroBanner />
-          {/* <HomeLocation /> */}
+          <HomeTouringSummaries />
           <HomeTrendingSummaries />
           {/* <HomeProgram /> */}
           {/* <HomeSpotlight /> */}
