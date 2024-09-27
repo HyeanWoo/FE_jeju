@@ -34,7 +34,7 @@ const HomeHeader = () => {
           alt="search-btn"
           width={24}
           height={24}
-          className="h-[24px] w-[24px]"
+          className="h-[24px] w-[24px] hover:cursor-pointer"
         />
       </div>
     </div>
