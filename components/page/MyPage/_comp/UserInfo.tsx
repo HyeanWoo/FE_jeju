@@ -1,34 +1,33 @@
 "use client";
 
-import { getUser } from "@/components/api/fetch";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import useStore from "@/components/common/store/store";
+import UserIcon from "../image/UserIcon";
+import useUser from "@/hooks/useUser";
 
 const UserInfo = () => {
-  const [userId, setUserId] = useState("");
+  const id = useStore().userId;
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const id = sessionStorage?.getItem("userId") as string;
-      setUserId(id);
-    }
-  }, []);
+  const { data, isLoading } = useUser(id);
 
-  const { data } = useQuery({
-    queryKey: ["getUser", userId],
-    queryFn: () => getUser(Number(userId)),
-    enabled: !!userId,
-  });
-
-  if (!data) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="mb-4 flex items-center space-x-4">
-      <div>
-        <h2 className="text-lg font-semibold">{data.nickname}님</h2>
-        <p className="text-gray-500">{data.createDate.split("T")[0]}</p>
+      <div className="flex w-[350px] items-center rounded-lg bg-gray-200 p-4">
+        <div className="flex h-[56px] w-[56px] items-center justify-center rounded-[8px] bg-white">
+          <UserIcon />
+        </div>
+        <div className="ml-4">
+          <h2 className="text-left font-pretendard text-[18px] font-[700] leading-[25.56px]">
+            {data?.nickname}
+          </h2>
+          <p className="text-gray-600">{`ID ${data?.id}`}</p>
+        </div>
+        <button className="ml-auto flex-shrink-0 text-left font-pretendard text-[14px] font-[500] leading-[17.5px] text-[#8D9097]">
+          로그아웃
+        </button>
       </div>
     </div>
   );

@@ -2,61 +2,124 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import useKakaoLogin from "../_hook/useKakaoQueries";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useUpdateSignUp } from "../_hook/useUpdateSignUp";
+import { getUser } from "@/components/api/fetch";
+import useStore from "@/components/common/store/store";
 
-interface KakaoLoginButtonProps {}
+const getKakaoAuthUrl = (clientId: any, redirectUri: any) =>
+  `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
 
-const KakaoLoginButton = (props: KakaoLoginButtonProps) => {
+function generateRandomKakaoNickname(): string {
+  const adjectives = [
+    "Happy",
+    "Sunny",
+    "Cool",
+    "Smart",
+    "Brave",
+    "Mighty",
+    "Clever",
+    "Joyful",
+    "Lucky",
+    "Charming",
+  ];
+  const animals = [
+    "Tiger",
+    "Lion",
+    "Bear",
+    "Eagle",
+    "Wolf",
+    "Fox",
+    "Dragon",
+    "Panda",
+    "Dolphin",
+    "Shark",
+  ];
+
+  const randomAdjective =
+    adjectives[Math.floor(Math.random() * adjectives.length)];
+  const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+
+  return `${randomAdjective} ${randomAnimal}`;
+}
+
+const checkUserExists = async (id: any) => {
+  try {
+    const user = await getUser(id);
+
+    return !!user;
+  } catch {
+    return false;
+  }
+};
+
+const KakaoLoginButton = () => {
   const searchParams = useSearchParams();
-  const redirect_uri =
-    typeof window !== "undefined" ? `https://frog-nu.vercel.app/login` : "";
+
+  const redirectUri = useMemo(() => {
+    return process.env.NEXT_PUBLIC_ENV === "development"
+      ? `http://localhost:3000/login`
+      : `https://travelcut.vercel.app/login`;
+  }, []);
 
   const { push } = useRouter();
+  const setUserId = useStore().setUserId;
 
-  const _code = useMemo(() => {
-    return searchParams.get("code") || "";
-  }, [searchParams]);
+  const [isLogin, setIsLogin] = useState(false);
+
+  const _code = useMemo(() => searchParams.get("code") || "", [searchParams]);
 
   const { loginMutation, userInfoQuery } = useKakaoLogin({
     client_id: "d189c92b8d450da84be516fa5364123b",
-    redirect_uri: redirect_uri,
+    redirect_uri: redirectUri,
     code: _code,
   });
 
   const { mutate } = useUpdateSignUp();
 
-  const onClick = () => {
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${"d189c92b8d450da84be516fa5364123b"}&redirect_uri=${redirect_uri}&response_type=code`;
+  const handleLoginClick = () => {
+    const KAKAO_AUTH_URL = getKakaoAuthUrl(
+      "d189c92b8d450da84be516fa5364123b",
+      redirectUri,
+    );
     window.location.href = KAKAO_AUTH_URL;
   };
 
   useEffect(() => {
-    if (_code) {
+    if (_code && !isLogin) {
+      setIsLogin(true);
       loginMutation.mutate();
     }
-  }, [_code]);
+  }, [_code, loginMutation, isLogin]);
 
   useEffect(() => {
+    const updateUserInfo = async () => {
+      const { id, nickname } = userInfoQuery.data;
+      sessionStorage.setItem(window.location.pathname, id);
+      setUserId(id);
+
+      const isUser = await checkUserExists(id);
+
+      if (isUser) {
+        push("/mypage");
+      } else {
+        await mutate({
+          nickname: nickname.toString() || generateRandomKakaoNickname(),
+          userId: id,
+        });
+        push("/onboarding");
+      }
+    };
+
     if (userInfoQuery.data) {
-      const nickname = Math.random() + "";
-      sessionStorage.setItem("userId", userInfoQuery.data?.id);
-      sessionStorage.setItem(
-        "nickname",
-        userInfoQuery.data?.nickname || nickname,
-      );
-      mutate({
-        nickname: userInfoQuery.data?.nickname || nickname,
-        userId: userInfoQuery.data?.id,
-      });
-      push("/mypage");
+      updateUserInfo();
     }
-  }, [userInfoQuery.data]);
+  }, [userInfoQuery.data, setUserId, push, mutate]);
 
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={handleLoginClick}
       className="flex h-[48px] w-[350px] items-center justify-center gap-4 rounded-lg bg-[#FEE501] px-4 py-3"
     >
       <span className="text-lg font-medium text-black">카카오로 로그인</span>

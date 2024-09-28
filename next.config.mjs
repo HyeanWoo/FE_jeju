@@ -19,6 +19,13 @@ const nextConfig = {
       },
     ],
   },
+
+  env: {
+    NEXT_PUBLIC_BASE_API:
+      process.env.NEXT_PUBLIC_BASE_API || "http://localhost:8080", // Default for development
+    NEXT_PUBLIC_BASE_API_V1:
+      process.env.NEXT_PUBLIC_BASE_API_V1 || "http://localhost:8080/apiV1", // Default for development
+  },
 };
 
 export default nextConfig;

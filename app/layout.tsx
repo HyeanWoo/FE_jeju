@@ -23,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={pretendard.className}>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          {children}
+          <div id="modal"></div>
+        </ReactQueryProvider>
       </body>
     </html>
   );
