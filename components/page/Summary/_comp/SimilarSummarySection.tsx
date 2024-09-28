@@ -15,7 +15,7 @@ export default function SimilarSummarySection({ id }: { id: number }) {
     return <></>;
   }
 
-  const selectedContent = contents[0];
+  const selectedContent = contents[0].content;
 
   const { data: recommends } = useTourContent({
     lat: Number(selectedContent.latitude),
@@ -42,8 +42,7 @@ export default function SimilarSummarySection({ id }: { id: number }) {
               alt={course.title}
               width={252}
               height={140}
-              className="rounded-[4px]"
-              style={{ width: 252, height: 140 }}
+              className="h-[140px] w-[252px] rounded-[4px] object-cover"
             />
             <div className="flex flex-col space-y-1">
               <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>

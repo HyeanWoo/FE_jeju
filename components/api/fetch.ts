@@ -46,10 +46,14 @@ export const fetchTourContent = async (position: Position) => {
   return response.json();
 };
 
-export const fetchContents = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/contents`, {
-    cache: "no-store",
-  });
+export const fetchContent = async (id: number) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/${id}/content`,
+    {
+      cache: "no-store",
+    },
+  );
+
   if (!response.ok) {
     throw new Error("network problem is occurred.");
   }
@@ -57,9 +61,24 @@ export const fetchContents = async () => {
   return response.json();
 };
 
-export const fetchContentsBySummaryId = async (summaryId: number) => {
+export const fetchContents = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/contents`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
+export const fetchContentsBySummaryId = async (
+  summaryId: number,
+  userId?: number,
+) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_API}/summary/${summaryId}/contents`,
+    `${process.env.NEXT_PUBLIC_BASE_API}/summary/${summaryId}/contents?memberId=${userId ?? ""}`,
     {
       cache: "no-store",
     },

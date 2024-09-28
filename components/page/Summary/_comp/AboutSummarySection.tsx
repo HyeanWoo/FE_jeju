@@ -6,17 +6,23 @@ import SummaryMap from "./SummaryMap";
 import ContentItem from "./ContentItem";
 
 export default function AboutSummarySection({ id }: { id: number }) {
-  const { data: { contents } = {} } = useSummaryContents(id);
+  const userId = Number(sessionStorage.getItem("userId"));
+  const { data: { contents } = {} } = useSummaryContents(id, userId);
 
-  if (!contents) {
+  const contentList = contents?.map((content) => ({
+    ...content.content,
+    isCertified: content.isCertified,
+  }));
+
+  if (!contentList) {
     return <div>loading...</div>;
   }
 
-  if (contents.length === 0) {
+  if (contentList.length === 0) {
     return <div>코스 정보가 없습니다</div>;
   }
 
-  const places: Position[] = contents?.map((content) => ({
+  const places: Position[] = contentList?.map((content) => ({
     lat: Number(content.latitude),
     lng: Number(content.longitude),
   }));
@@ -30,7 +36,7 @@ export default function AboutSummarySection({ id }: { id: number }) {
         <SummaryMap places={places} />
       </div>
       <div className="flex flex-col space-y-6 pb-6">
-        {contents?.map((content, index) => (
+        {contentList?.map((content, index) => (
           <ContentItem
             key={content.id}
             content={content}

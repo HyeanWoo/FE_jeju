@@ -15,7 +15,6 @@ import {
   REACT_QUERY_GC_TIME,
   REACT_QUERY_STALE_TIME,
 } from "@/components/common/constants";
-import Footer from "@/components/shared/Footer";
 
 export default async function SummaryRoot({
   params,

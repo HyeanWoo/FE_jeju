@@ -57,7 +57,7 @@ export default function SummaryInfoSection({ id }: { id: number }) {
           {summaryData?.description}
         </h3>
       </div>
-      <CourseProgress />
+      <CourseProgress summaryId={id} />
     </section>
   );
 }

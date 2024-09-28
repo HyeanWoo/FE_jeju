@@ -48,8 +48,13 @@ export type SummaryResponse = {
   summary: Summary;
 };
 
+export type ContentWithCertified = {
+  content: Content;
+  isCertified: boolean;
+};
+
 export type ContentsResponse = {
-  contents: Content[];
+  contents: ContentWithCertified[];
 };
 
 export type Position = {
