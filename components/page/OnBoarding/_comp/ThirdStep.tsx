@@ -19,9 +19,9 @@ const ThirdStep = () => {
       <Image className="pb-[16px]" src={thirdImage} alt="first" />
       <div className="flex h-[14px] w-full justify-center pb-[37px]">
         <div className="flex items-center space-x-2">
-          <div className="h-[6px] w-[6px] rounded-full bg-gray-400"></div>
           <div className="h-[6px] w-[6px] rounded-full bg-gray-300"></div>
-          <div className="h-[6px] w-[16px] rounded-full bg-gray-300"></div>
+          <div className="h-[6px] w-[6px] rounded-full bg-gray-300"></div>
+          <div className="h-[6px] w-[16px] rounded-full bg-gray-400"></div>
         </div>
       </div>
       <Button
