@@ -104,7 +104,7 @@ const KakaoLoginButton = () => {
         push("/mypage");
       } else {
         await mutate({
-          nickname: nickname.toString() || generateRandomKakaoNickname(),
+          nickname: nickname || generateRandomKakaoNickname(),
           userId: id,
         });
         push("/onboarding");
