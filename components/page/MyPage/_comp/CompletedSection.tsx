@@ -1,6 +1,7 @@
+"use client";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 
-const Progress = () => {
+const CompletedSection = () => {
   const CompletedList = [
     { desc: "효리네 민박" },
     { desc: "효리네 민박" },
@@ -26,9 +27,6 @@ const Progress = () => {
           />
 
           <div className="flex-1 items-start">
-            <p className="rounded-md py-1 text-left text-[12px] font-semibold leading-[14.4px] text-[#8D9097]">
-              남은 코스
-            </p>
             <p className="text-base font-bold">{item.desc}</p>
           </div>
         </div>
@@ -37,4 +35,4 @@ const Progress = () => {
   );
 };
 
-export default Progress;
+export default CompletedSection;

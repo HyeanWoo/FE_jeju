@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import Header from "./_comp/Header";
 import MyPageTabs from "./_comp/MyPageTabs";
+import TabContents from "./_comp/TabContents";
 import UserInfo from "./_comp/UserInfo";
 const MyPage = () => {
   return (
@@ -8,7 +10,10 @@ const MyPage = () => {
         <Header />
         <main className="container flex w-full flex-col px-5">
           <UserInfo />
-          <MyPageTabs />
+          <Suspense>
+            <MyPageTabs />
+            <TabContents />
+          </Suspense>
         </main>
       </div>
     </div>

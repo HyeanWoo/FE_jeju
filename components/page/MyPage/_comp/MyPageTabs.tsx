@@ -21,15 +21,15 @@ const MyPageTabs = () => {
   };
 
   return (
-    <div className="mt-4 flex justify-center">
+    <div className="flex justify-center">
       <div className="w-full max-w-md">
-        <div className="flex">
+        <div className="flex h-[52px] items-center gap-4">
           <button
-            className={`flex h-[32px] items-center justify-center border-b-2 ${
+            className={`flex h-[32px] items-center border-b-2 ${
               selectedTab === "inProgress"
                 ? "border-[#F43C60] text-[#F43C60]"
                 : "border-transparent bg-[var(--Neutral-Black)] text-[#000000]"
-            } whitespace-nowrap p-4`}
+            } whitespace-nowrap`}
             onClick={() => onClick("inProgress")}
           >
             <span
@@ -44,7 +44,7 @@ const MyPageTabs = () => {
               selectedTab === "completed"
                 ? "border-[#F43C60] text-[#F43C60]"
                 : "border-transparent bg-[var(--Neutral-Black)] text-[#000000]"
-            } whitespace-nowrap p-4`}
+            } whitespace-nowrap`}
             onClick={() => onClick("completed")}
           >
             <span
@@ -53,11 +53,6 @@ const MyPageTabs = () => {
               인증 완료된 코스
             </span>
           </button>
-        </div>
-
-        <div className="mt-4 rounded-lg border bg-gray-100 p-4">
-          {selectedTab === "inProgress" && <div>진행중인 코스</div>}
-          {selectedTab === "completed" && <div>인증 완료된 코스</div>}
         </div>
       </div>
     </div>
