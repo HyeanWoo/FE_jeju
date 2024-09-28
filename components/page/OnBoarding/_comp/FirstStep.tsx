@@ -26,7 +26,7 @@ const FirstStep = () => {
       </div>
       <Button
         onClick={() => push("/onboarding/second")}
-        className="w-[390px]"
+        className="w-[350px]"
         size="medium"
       >
         다음

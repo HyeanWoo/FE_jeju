@@ -24,11 +24,7 @@ const ThirdStep = () => {
           <div className="h-[6px] w-[16px] rounded-full bg-gray-400"></div>
         </div>
       </div>
-      <Button
-        onClick={() => push("/login")}
-        className="w-[390px]"
-        size="medium"
-      >
+      <Button onClick={() => push("/")} className="w-[350px]" size="medium">
         다음
       </Button>
     </div>
