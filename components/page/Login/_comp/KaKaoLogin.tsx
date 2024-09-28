@@ -107,7 +107,7 @@ const KakaoLoginButton = () => {
           nickname: nickname || generateRandomKakaoNickname(),
           userId: id,
         });
-        push("/onboarding");
+        push("/onboarding/first");
       }
     };
 
