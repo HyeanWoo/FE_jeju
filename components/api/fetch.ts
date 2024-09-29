@@ -1,5 +1,11 @@
 import { Position } from "./types";
-import { KakaoTokenResponse, UserResponse } from "./types/type";
+import {
+  ContentFinish,
+  KakaoTokenResponse,
+  SummaryResponse,
+  TourFinish,
+  UserResponse,
+} from "./types/type";
 
 export const fetchSummary = async (id: number) => {
   const response = await fetch(
@@ -176,6 +182,48 @@ export const updateSignUp = async (
 export const getUser = async (userId: number): Promise<UserResponse> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/member/${userId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`Error ${response.status}: ${errorData.message}`);
+  }
+
+  return response.json();
+};
+
+export const getTourFinish = async (userId: number): Promise<TourFinish[]> => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/tour/finish?memberId=${userId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`Error ${response.status}: ${errorData.message}`);
+  }
+
+  return response.json();
+};
+
+export const getSummaryFinish = async (
+  userId: number,
+): Promise<ContentFinish[]> => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/tour/finish?memberId=${userId}`,
     {
       method: "GET",
       headers: {

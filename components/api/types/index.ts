@@ -7,4 +7,6 @@ export type {
   Position,
   KakaoTokenResponse,
   KakaoUserInfo,
+  TourFinish,
+  ContentFinish,
 } from "./type";

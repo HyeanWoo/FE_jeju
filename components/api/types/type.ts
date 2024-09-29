@@ -104,3 +104,29 @@ export interface UserResponse {
   email: string;
   nickname: string;
 }
+
+export interface TourFinish {
+  createDate: string;
+  updateDate: string;
+  id: number;
+  title: string;
+  description: string;
+  ottType: string;
+  tags: string;
+  image: Image;
+}
+
+export interface ContentFinish {
+  createDate: string;
+  updateDate: string;
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  phone: string;
+  address: string;
+  latitude: string;
+  longitude: string;
+  summary: Summary;
+  imageList: Image[];
+}

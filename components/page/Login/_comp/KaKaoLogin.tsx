@@ -95,7 +95,7 @@ const KakaoLoginButton = () => {
   useEffect(() => {
     const updateUserInfo = async () => {
       const { id, nickname } = userInfoQuery.data;
-      sessionStorage.setItem(window.location.pathname, id);
+      sessionStorage.setItem(`/login`, id);
       setUserId(id);
 
       const isUser = await checkUserExists(id);
