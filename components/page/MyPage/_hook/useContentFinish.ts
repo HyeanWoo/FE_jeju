@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useContentFinish = (userId: number | null) => {
   return useQuery({
-    queryKey: ["useTourFinish"],
+    queryKey: ["useContentFinish"],
     queryFn: () => getSummaryFinish(userId as number),
     enabled: !!userId,
   });

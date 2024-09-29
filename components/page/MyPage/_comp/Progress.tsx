@@ -27,7 +27,7 @@ const ProgressPlaceHolder = () => {
 
           <div className="flex-1 items-start">
             <p className="rounded-md py-1 text-left text-[12px] font-semibold leading-[14.4px] text-[#8D9097]">
-              남은 코스 1/3
+              남은 코스
             </p>
             <p className="text-base font-bold">{item.desc}</p>
           </div>
@@ -52,7 +52,7 @@ const Progress = () => {
 
   return (
     <div className="space-y-4">
-      {isLoading || data?.length === 0 ? (
+      {!data || isLoading || data?.length === 0 ? (
         <ProgressPlaceHolder />
       ) : (
         data?.map((item, index) => (

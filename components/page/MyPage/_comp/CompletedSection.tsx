@@ -48,9 +48,11 @@ const CompletedSection = () => {
 
   const { data, isLoading } = useTourFinish(userId);
 
+  console.log("data", data);
+
   return (
     <div className="space-y-4">
-      {isLoading || data?.length === 0 ? (
+      {!data || isLoading || data?.length === 0 ? (
         <CompletedPlaceHolder />
       ) : (
         data?.map((item, index) => (
