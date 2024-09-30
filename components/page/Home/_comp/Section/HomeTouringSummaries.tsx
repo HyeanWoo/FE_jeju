@@ -19,7 +19,7 @@ export default function HomeTouringSummaries() {
   const { push } = useRouter();
   const { data: tourSummaries } = useTourSummaries(userId);
 
-  if (!tourSummaries) {
+  if (!tourSummaries || tourSummaries.length === 0) {
     return <></>;
   }
 
