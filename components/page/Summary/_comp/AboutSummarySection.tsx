@@ -4,9 +4,18 @@ import { useSummaryContentsByUser } from "@/components/api/queries";
 import { Position } from "@/components/api/types";
 import SummaryMap from "./SummaryMap";
 import ContentItem from "./ContentItem";
+import { useEffect, useState } from "react";
 
 export default function AboutSummarySection({ id }: { id: number }) {
-  const userId = Number(sessionStorage.getItem("/login"));
+  const [userId, setUserId] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const sessionUserId = Number(sessionStorage.getItem("/login"));
+      setUserId(sessionUserId);
+    }
+  });
+
   const { data: { contents } = {} } = useSummaryContentsByUser(id, userId);
 
   const contentList = contents?.map((content) => ({

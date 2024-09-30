@@ -1,9 +1,16 @@
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSummaryContentsByUser } from "@/components/api/queries";
 
 export default function CourseProgress({ summaryId }: { summaryId: number }) {
-  const userId = Number(sessionStorage.getItem("/login"));
+  const [userId, setUserId] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const sessionUserId = Number(sessionStorage.getItem("/login"));
+      setUserId(sessionUserId);
+    }
+  });
 
   const { data: { contents } = {} } = useSummaryContentsByUser(
     summaryId,

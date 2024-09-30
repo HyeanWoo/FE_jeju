@@ -1,14 +1,21 @@
 "use client";
 
-import { useMemo } from "react";
-import { useSummaries } from "@/components/api/queries";
 import { Carousel } from "@/components/shared/Carousel";
 import { useRouter } from "next/navigation";
 import TouringSummaryItem from "../TouringSummaryItem";
 import { useTourSummaries } from "@/components/api/queries/summary";
+import { useEffect, useState } from "react";
 
 export default function HomeTouringSummaries() {
-  const userId = Number(sessionStorage.getItem("/login"));
+  const [userId, setUserId] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const sessionUserId = Number(sessionStorage.getItem("/login"));
+      setUserId(sessionUserId);
+    }
+  });
+
   const { push } = useRouter();
   const { data: tourSummaries } = useTourSummaries(userId);
 
