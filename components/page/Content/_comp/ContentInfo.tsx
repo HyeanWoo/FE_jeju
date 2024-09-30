@@ -3,6 +3,8 @@
 import { Content } from "@/components/api/types";
 import { PhotoGallery } from "./PhotoGallery";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { FullSizeImageGallery } from "@/components/shared/FullSizeImageGallery";
 
 export default function ContentInfo({ content }: { content: Content }) {
   const representImage = content.imageList.find(
@@ -19,9 +21,29 @@ export default function ContentInfo({ content }: { content: Content }) {
     router.push(`${pathname}/certify`);
   };
 
+  const [imageIndex, setImageIndex] = useState<number>(0);
+  const [isFullSizeGalleryOpen, setIsFullSizeGalleryOpen] =
+    useState<boolean>(false);
+
+  const onGalleryItemClick = (index: number) => {
+    setImageIndex(index);
+    setIsFullSizeGalleryOpen(true);
+  };
+
   return (
     <div className="flex w-full flex-col">
-      <PhotoGallery representImage={representImage} restImages={restImages} />
+      <PhotoGallery
+        representImage={representImage}
+        restImages={restImages}
+        openGallery={onGalleryItemClick}
+      />
+      <FullSizeImageGallery
+        close={() => setIsFullSizeGalleryOpen(false)}
+        content={content}
+        currentIndex={imageIndex}
+        isOpen={isFullSizeGalleryOpen}
+        setImageIndex={setImageIndex}
+      />
       <div className="flex flex-col space-y-6 pb-6 pt-6 sm:pb-10">
         <div className="flex flex-col space-y-3">
           <h2 className="text-title3 text-neutral-900">{content.title}</h2>

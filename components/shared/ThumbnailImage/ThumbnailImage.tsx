@@ -3,9 +3,11 @@ import Image from "next/image";
 type ThumbnailImageProps = {
   src: string;
   alt: string;
-  width?: number | `${number}` | undefined;
-  height?: number | `${number}` | undefined;
-  className?: string | undefined;
+  width?: number | `${number}`;
+  height?: number | `${number}`;
+  className?: string;
+  sizes?: string;
+  onClick?: () => void;
 };
 
 const DEFAULT_PLACEHOLDER = "/image/image-placeholder.svg";
@@ -16,6 +18,8 @@ export default function ThumbnailImage({
   className,
   height,
   width,
+  sizes,
+  onClick,
 }: ThumbnailImageProps) {
   const imageUrl =
     src === DEFAULT_PLACEHOLDER
@@ -28,6 +32,8 @@ export default function ThumbnailImage({
       height={height}
       width={width}
       className={className}
+      sizes={sizes}
+      onClick={onClick}
     />
   );
 }

@@ -1,6 +1,10 @@
 "use client";
 
 import {
+  DRAG_THRESHOLD,
+  TRANSLATE_X_THRESHOLD,
+} from "@/components/common/constants";
+import {
   useState,
   useEffect,
   useRef,
@@ -24,11 +28,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const [startPosition, setStartPosition] = useState<number>(0);
   const [translateX, setTranslateX] = useState<number>(0);
   const [dragging, setDragging] = useState<boolean>(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const autoSlideInterval = useRef<NodeJS.Timeout | null>(null);
 
   const itemCount = items.length;
-  const dragThreshold = 10;
 
   useEffect(() => {
     startAutoSlide();
@@ -76,18 +78,18 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const movedBy = currentPosition - startPosition;
     setTranslateX(movedBy);
 
-    if (Math.abs(movedBy) > dragThreshold) {
+    if (Math.abs(movedBy) > DRAG_THRESHOLD) {
       setDragging(true);
     }
   };
 
-  const handleMouseUp = (e: MouseEvent) => {
+  const handleMouseUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
 
-    if (translateX > 50) {
+    if (translateX > TRANSLATE_X_THRESHOLD) {
       handlePrev();
-    } else if (translateX < -50) {
+    } else if (translateX < -TRANSLATE_X_THRESHOLD) {
       handleNext();
     }
 
@@ -113,12 +115,12 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const movedBy = currentPosition - startPosition;
     setTranslateX(movedBy);
 
-    if (Math.abs(movedBy) > dragThreshold) {
+    if (Math.abs(movedBy) > DRAG_THRESHOLD) {
       setDragging(true);
     }
   };
 
-  const handleTouchEnd = (e: TouchEvent) => {
+  const handleTouchEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
 
@@ -145,11 +147,10 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseLeave={() => isDragging && handleMouseUp({} as MouseEvent)}
+        onMouseLeave={() => isDragging && handleMouseUp()}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        ref={carouselRef}
       >
         <div
           className="flex transition-transform duration-300 ease-in-out"
