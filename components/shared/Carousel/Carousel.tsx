@@ -31,6 +31,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const autoSlideInterval = useRef<NodeJS.Timeout | null>(null);
 
   const itemCount = items.length;
+  const itemWidth = document.body.clientWidth < 765 ? 350 : 704;
 
   useEffect(() => {
     startAutoSlide();
@@ -43,7 +44,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
     stopAutoSlide();
     autoSlideInterval.current = setInterval(() => {
       handleNext();
-    }, 5000);
+    }, 500000);
   };
 
   const stopAutoSlide = () => {
@@ -143,7 +144,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   return (
     <div className="flex flex-col items-center">
       <div
-        className="relative h-[200px] w-[350px] cursor-pointer overflow-hidden"
+        className="relative h-[200px] w-[350px] cursor-pointer overflow-hidden sm:w-[704px]"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -155,15 +156,14 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         <div
           className="flex transition-transform duration-300 ease-in-out"
           style={{
-            transform: `translateX(calc(-${currentIndex * 350}px + ${translateX}px))`,
-            width: `${350 * itemCount}px`,
+            transform: `translateX(calc(-${currentIndex * itemWidth}px + ${translateX}px))`,
+            width: `${itemWidth * itemCount}px`,
           }}
         >
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex h-[200px] w-[350px] flex-shrink-0 items-center justify-center"
-              style={{ width: "350px", height: "200px" }}
+              className="flex h-[200px] w-[350px] flex-shrink-0 items-center justify-center sm:w-[704px]"
             >
               <div
                 className="flex h-full w-full items-center justify-center"

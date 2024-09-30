@@ -5,20 +5,27 @@ import { useSummaries } from "@/components/api/queries";
 import { Carousel } from "@/components/shared/Carousel";
 import { useRouter } from "next/navigation";
 import TouringSummaryItem from "../TouringSummaryItem";
+import { useTourSummaries } from "@/components/api/queries/summary";
 
 export default function HomeTouringSummaries() {
+  const userId = Number(sessionStorage.getItem("/login"));
   const { push } = useRouter();
-  const { data } = useSummaries();
+  const { data: tourSummaries } = useTourSummaries(userId);
 
-  const summaries = useMemo(
-    () => data?.map((summary) => summary.summary) ?? [],
-    [],
-  );
+  if (!tourSummaries) {
+    return <></>;
+  }
 
-  const touringSummaryItems = summaries.map((summary) => {
+  const touringSummaryItems = tourSummaries.map((summary) => {
     return {
-      content: <TouringSummaryItem summary={summary} />,
-      onClick: () => push(`/summary/${summary.id}`),
+      content: (
+        <TouringSummaryItem
+          summary={summary.summary}
+          certifiedContent={summary.certifiedContent}
+          totalContent={summary.totalContent}
+        />
+      ),
+      onClick: () => push(`/summary/${summary.summary.id}`),
     };
   });
 

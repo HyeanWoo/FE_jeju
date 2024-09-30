@@ -1,0 +1,1 @@
+export { useContentCertification } from "./certify";

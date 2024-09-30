@@ -6,6 +6,10 @@ import {
 import HomeHeader from "./_comp/HomeHeader";
 import {
   HomeHeroBanner,
+  HomeLatestSummaries,
+  HomeProgram,
+  HomeSpotlight,
+  HomeSpotsInJeju,
   HomeTouringSummaries,
   HomeTrendingSummaries,
 } from "./_comp/Section";
@@ -40,10 +44,10 @@ export default async function HomeRoot() {
           <HomeHeroBanner />
           <HomeTouringSummaries />
           <HomeTrendingSummaries />
-          {/* <HomeProgram /> */}
-          {/* <HomeSpotlight /> */}
-          {/* <HomeLatestSummaries /> */}
-          {/* <HomeSpotsInJeju /> */}
+          <HomeProgram />
+          <HomeSpotlight />
+          <HomeLatestSummaries />
+          <HomeSpotsInJeju />
         </div>
       </main>
       <Footer />

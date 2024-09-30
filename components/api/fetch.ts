@@ -1,8 +1,8 @@
 import { Position } from "./types";
 import {
+  CertifyResponse,
   ContentFinish,
   KakaoTokenResponse,
-  SummaryResponse,
   TourFinish,
   UserResponse,
 } from "./types/type";
@@ -236,6 +236,40 @@ export const getSummaryFinish = async (
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(`Error ${response.status}: ${errorData.message}`);
+  }
+
+  return response.json();
+};
+
+export const certifyCourse = async (
+  contentId: number,
+  certifyFormData: FormData,
+): Promise<CertifyResponse> => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/content/${contentId}/certification`,
+    {
+      method: "POST",
+      body: certifyFormData,
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
+export const getTourList = async (userId: number) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/tour/list?memberId=${userId}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
   }
 
   return response.json();

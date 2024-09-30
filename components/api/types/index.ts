@@ -9,4 +9,6 @@ export type {
   KakaoUserInfo,
   TourFinish,
   ContentFinish,
+  CertifyResponse,
+  TourListResponse,
 } from "./type";

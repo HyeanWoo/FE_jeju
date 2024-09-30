@@ -1,23 +1,18 @@
 import Image from "next/image";
 import { useMemo } from "react";
-import { useSummaryContents } from "@/components/api/queries";
+import { useSummaryContentsByUser } from "@/components/api/queries";
 
 export default function CourseProgress({ summaryId }: { summaryId: number }) {
-  const userId = Number(sessionStorage.getItem("userId"));
+  const userId = Number(sessionStorage.getItem("/login"));
 
-  const { data: { contents } = {} } = useSummaryContents(summaryId, userId);
+  const { data: { contents } = {} } = useSummaryContentsByUser(
+    summaryId,
+    userId,
+  );
   const contentList = contents?.map((content) => ({
     isCertified: content.isCertified,
     id: content.content.id,
   }));
-
-  if (!contentList) {
-    return <div>loading...</div>;
-  }
-
-  if (contentList.length === 0) {
-    return <div>코스 정보가 없습니다.</div>;
-  }
 
   const finishedCourseCount = useMemo(
     () => contentList?.filter((content) => content.isCertified).length ?? 0,
@@ -41,6 +36,14 @@ export default function CourseProgress({ summaryId }: { summaryId: number }) {
       `h-[6px] w-[${progressRatio}%] rounded-full bg-main-500 transition-all duration-300`,
     [progressRatio],
   );
+
+  if (!contentList) {
+    return <div>loading...</div>;
+  }
+
+  if (contentList.length === 0) {
+    return <div>코스 정보가 없습니다.</div>;
+  }
 
   const scrollToCourse = () => {
     const headingContentId = contentList.find(

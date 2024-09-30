@@ -20,9 +20,17 @@ export const useContents = () => {
   });
 };
 
-export const useSummaryContents = (summaryId: number, userId?: number) => {
+export const useSummaryContents = (summaryId: number) => {
   return useQuery<ContentsResponse>({
     queryKey: ["summaryContents", summaryId],
+    queryFn: () => fetchContentsBySummaryId(summaryId),
+  });
+};
+
+export const useSummaryContentsByUser = (summaryId: number, userId: number) => {
+  return useQuery<ContentsResponse>({
+    queryKey: ["summaryContentsByUser", summaryId, userId],
     queryFn: () => fetchContentsBySummaryId(summaryId, userId),
+    refetchOnMount: "always",
   });
 };

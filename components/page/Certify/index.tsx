@@ -11,7 +11,7 @@ export default function CertifyRoot({
   return (
     <div className="mx-auto mb-24 flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
       <CertifyHeader />
-      <UploadPhotoFunnel />
+      <UploadPhotoFunnel contentId={contentId} summaryId={summaryId} />
     </div>
   );
 }

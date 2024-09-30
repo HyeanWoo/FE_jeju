@@ -130,3 +130,15 @@ export interface ContentFinish {
   summary: Summary;
   imageList: Image[];
 }
+
+export type CertifyResponse = {
+  isLast: boolean;
+};
+
+type TourSummary = {
+  summary: Summary;
+  certifiedContent: number;
+  totalContent: number;
+};
+
+export type TourListResponse = TourSummary[];

@@ -1,13 +1,13 @@
 "use client";
 
-import { useSummaryContents } from "@/components/api/queries";
+import { useSummaryContentsByUser } from "@/components/api/queries";
 import { Position } from "@/components/api/types";
 import SummaryMap from "./SummaryMap";
 import ContentItem from "./ContentItem";
 
 export default function AboutSummarySection({ id }: { id: number }) {
-  const userId = Number(sessionStorage.getItem("userId"));
-  const { data: { contents } = {} } = useSummaryContents(id, userId);
+  const userId = Number(sessionStorage.getItem("/login"));
+  const { data: { contents } = {} } = useSummaryContentsByUser(id, userId);
 
   const contentList = contents?.map((content) => ({
     ...content.content,

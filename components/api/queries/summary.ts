@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchSummaries, fetchSummary } from "@/components/api/fetch";
-import { SummaryResponse } from "@/components/api/types";
+import {
+  fetchSummaries,
+  fetchSummary,
+  getTourList,
+} from "@/components/api/fetch";
+import { SummaryResponse, TourListResponse } from "@/components/api/types";
 
 export const useSummary = (id: number) => {
   return useQuery<SummaryResponse>({
@@ -13,5 +17,12 @@ export const useSummaries = () => {
   return useQuery<SummaryResponse[]>({
     queryKey: ["summaries"],
     queryFn: fetchSummaries,
+  });
+};
+
+export const useTourSummaries = (userId: number) => {
+  return useQuery<TourListResponse>({
+    queryKey: ["tourSummaries", userId],
+    queryFn: () => getTourList(userId),
   });
 };

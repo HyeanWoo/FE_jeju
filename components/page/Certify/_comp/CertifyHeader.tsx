@@ -11,7 +11,7 @@ export default function SummaryHeader() {
   };
 
   return (
-    <header className="flex h-12 sm:px-[18px]">
+    <header className="flex h-14 sm:px-[18px]">
       <button onClick={goBack} className="p-3 sm:p-0 sm:py-2">
         <Image
           src="/image/icon/angle-bracket-left-black2.svg"

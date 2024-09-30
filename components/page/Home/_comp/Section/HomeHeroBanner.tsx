@@ -32,7 +32,7 @@ const HomeHeroBanner = () => {
   }
 
   return (
-    <section className="container relative z-0 mx-auto">
+    <section className="container relative z-0 mx-auto cursor-default">
       <div>
         <ThumbnailImage
           src={signatureSummary?.image.imageUrl}
