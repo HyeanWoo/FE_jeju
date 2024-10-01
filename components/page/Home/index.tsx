@@ -40,7 +40,7 @@ export default async function HomeRoot() {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <main className="mx-auto mb-[50px] flex w-full max-w-[390px] flex-col px-5 sm:max-w-[744px]">
         <HomeHeader />
-        <div className="container flex flex-col">
+        <div className="container flex flex-col space-y-[50px]">
           <HomeHeroBanner />
           <HomeTouringSummaries />
           <HomeTrendingSummaries />
