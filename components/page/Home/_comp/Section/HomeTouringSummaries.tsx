@@ -1,10 +1,10 @@
 "use client";
 
-import { Carousel } from "@/components/shared/Carousel";
-import { useRouter } from "next/navigation";
-import TouringSummaryItem from "../TouringSummaryItem";
-import { useTourSummaries } from "@/components/api/queries/summary";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useTourSummaries } from "@/components/api/queries";
+import { Carousel } from "@/components/shared/Carousel";
+import TouringSummaryItem from "../TouringSummaryItem";
 
 export default function HomeTouringSummaries() {
   const [userId, setUserId] = useState<number>(0);

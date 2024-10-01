@@ -37,6 +37,21 @@ export const fetchSummaries = async () => {
   return response.json();
 };
 
+export const fetchRecentSummaries = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API_V1}/recent/summaryList`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
 export const fetchTourContent = async (position: Position) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API}/recommendation?mapX=${position.lng}&mapY=${position.lat}`,

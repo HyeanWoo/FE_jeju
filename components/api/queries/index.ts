@@ -1,4 +1,9 @@
-export { useSummary, useSummaries } from "./summary";
+export {
+  useSummary,
+  useSummaries,
+  useRecentSummaries,
+  useTourSummaries,
+} from "./summary";
 export {
   useContent,
   useContents,

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import {
+  fetchRecentSummaries,
   fetchSummaries,
   fetchSummary,
   getTourList,
@@ -24,5 +25,12 @@ export const useTourSummaries = (userId: number) => {
   return useQuery<TourListResponse>({
     queryKey: ["tourSummaries", userId],
     queryFn: () => getTourList(userId),
+  });
+};
+
+export const useRecentSummaries = () => {
+  return useQuery<SummaryResponse[]>({
+    queryKey: ["recentSummaries"],
+    queryFn: fetchRecentSummaries,
   });
 };

@@ -2,40 +2,49 @@
 import { trendingCourses } from "@/lib/dummyData";
 import ImageWithOverlay from "@/components/common/Overlay/ImageWithOverlay";
 import Section from "@/components/common/Section/Section";
+import { useRecentSummaries } from "@/components/api/queries";
+import { useMemo } from "react";
+import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 
 const HomeLatestSummaries = () => {
+  const { data } = useRecentSummaries();
+
+  const summaries = data?.map((summary) => summary.summary);
+
+  if (!summaries || summaries.length === 0) {
+    return <></>;
+  }
+
   return (
-    <div className="relative">
-      <div className="absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-neutral-500 opacity-30">
-        <p className="text-7xl text-white">샘플 목록입니다.</p>
-      </div>
-      <Section title="최신 등록된 코스">
-        <Section.ItemList
-          items={trendingCourses}
-          renderItem={(summary, index) => (
-            <div
-              key={index + summary.title}
-              className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
-            >
-              <ImageWithOverlay
-                src={summary.thumbnail}
-                alt={summary.title}
-                overlayText={summary.title}
-                overlayClass="left-[42px] top-[50px]"
-              />
-              <div className="flex flex-col space-y-1">
-                <h4 className="text-bodyBold text-neutral-800">
-                  {summary.title}
-                </h4>
-                <h5 className="text-caption text-neutral-400">
-                  {summary.episode}
-                </h5>
-              </div>
+    <Section title="최신 등록된 코스">
+      <Section.ItemList
+        items={summaries}
+        renderItem={(summary, index) => (
+          <div
+            key={index + summary.title}
+            className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
+          >
+            <ThumbnailImage
+              src={summary?.image?.imageUrl}
+              alt={summary.title}
+              width={252}
+              height={140}
+              className="h-[140px] w-[252px] rounded-[4px] object-cover"
+            />
+            <div className="flex flex-col space-y-1">
+              <h4
+                className="text-bodyBold text-neutral-800"
+                dangerouslySetInnerHTML={{ __html: summary.title }}
+              ></h4>
+              <h5
+                className="truncate text-caption text-neutral-400"
+                dangerouslySetInnerHTML={{ __html: summary.description }}
+              ></h5>
             </div>
-          )}
-        />
-      </Section>
-    </div>
+          </div>
+        )}
+      />
+    </Section>
   );
 };
 
