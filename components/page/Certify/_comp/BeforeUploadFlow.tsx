@@ -4,9 +4,11 @@ import { ChangeEvent, RefObject } from "react";
 export default function BeforeUploadFlow({
   onFileChange,
   inputRef,
+  message,
 }: {
   onFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
   inputRef: RefObject<HTMLInputElement>;
+  message: string;
 }) {
   const choosePhoto = () => {
     if (inputRef.current) {
@@ -66,6 +68,9 @@ export default function BeforeUploadFlow({
             <span className="text-bodyBold text-white">사진 업로드</span>
           </button>
         </form>
+        {message && (
+          <p className="pt-2 text-center text-label text-main-500">{message}</p>
+        )}
       </div>
     </main>
   );

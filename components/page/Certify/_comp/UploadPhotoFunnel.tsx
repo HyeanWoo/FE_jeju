@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import BeforeUploadFlow from "./BeforeUploadFlow";
 import AfterUploadFlow from "./AfterUploadFlow";
 import UploadFinishedFlow from "./UploadFinishedFlow";
@@ -22,12 +22,19 @@ export default function UploadPhotoFunnel({
   const [step, setStep] = useState<UPLOAD_STEP>(UPLOAD_STEP.before);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [message, setMessage] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const certifyMutation = useContentCertification(contentId);
 
+  useEffect(() => {
+    console.log(message);
+  }, [message]);
+
   const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
+
+    setMessage("");
 
     // 10MB 제한
     if (selectedFile && selectedFile.size <= 10 * 1024 * 1024) {
@@ -38,7 +45,7 @@ export default function UploadPhotoFunnel({
     } else {
       setFile(null);
       setPreview(null);
-      console.warn("파일 크기는 10MB 이하여야 합니다");
+      setMessage("파일 크기는 10MB 이하여야 합니다.");
     }
   };
 
@@ -46,12 +53,19 @@ export default function UploadPhotoFunnel({
     e.preventDefault();
 
     if (!file) {
-      console.log("업로드에 실패했습니다. 다시 시도해주세요.");
+      setMessage("업로드에 실패했습니다. 다시 시도해주세요.");
+      return;
+    }
+
+    const userId = sessionStorage.getItem("/login");
+
+    if (!userId) {
+      setMessage("잘못된 접근입니다.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("memberId", Number(3717517).toString());
+    formData.append("memberId", userId);
     formData.append("summaryId", summaryId.toString());
     formData.append("image", file);
 
@@ -69,7 +83,11 @@ export default function UploadPhotoFunnel({
   return (
     <div>
       {step === UPLOAD_STEP.before && (
-        <BeforeUploadFlow onFileChange={onFileChange} inputRef={fileInputRef} />
+        <BeforeUploadFlow
+          onFileChange={onFileChange}
+          inputRef={fileInputRef}
+          message={message}
+        />
       )}
       {step === UPLOAD_STEP.after && (
         <AfterUploadFlow

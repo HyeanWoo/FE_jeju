@@ -25,6 +25,7 @@ export const useTourSummaries = (userId: number) => {
   return useQuery<TourListResponse>({
     queryKey: ["tourSummaries", userId],
     queryFn: () => getTourList(userId),
+    enabled: !!userId,
   });
 };
 
