@@ -20,12 +20,19 @@ const Section = ({ title, children }: SectionProps) => {
 
 interface SectionItemListProps {
   items: any[];
+  isCursor?: boolean;
   renderItem: (item: any, index: number) => ReactNode;
 }
 
-const SectionItemList = ({ items, renderItem }: SectionItemListProps) => {
+const SectionItemList = ({
+  items,
+  renderItem,
+  isCursor,
+}: SectionItemListProps) => {
   return (
-    <div className="flex space-x-3 overflow-x-auto">
+    <div
+      className={`flex space-x-3 overflow-x-auto ${isCursor ? "cursor-pointer" : ""}`}
+    >
       {items.map(renderItem)}
     </div>
   );
@@ -36,6 +43,7 @@ interface SectionListItemProps {
   titleKey: string;
   subtitleKey: string;
   imageKey: string;
+  isCursor?: boolean;
 }
 
 const SectionListItem = ({
@@ -45,7 +53,7 @@ const SectionListItem = ({
   imageKey,
 }: SectionListItemProps) => {
   return (
-    <div className="flex-none flex-col space-y-2">
+    <div className={`flex-none flex-col space-y-2`}>
       <Image
         src={item[imageKey]}
         alt={item[titleKey]}

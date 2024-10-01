@@ -23,6 +23,7 @@ const HomeLatestSummaries = () => {
     <Section title="최신 등록된 코스">
       <Section.ItemList
         items={summaries}
+        isCursor={true}
         renderItem={(summary, index) => (
           <div
             key={index + summary.title}

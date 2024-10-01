@@ -4,12 +4,21 @@ import useStore from "@/components/common/store/store";
 import UserIcon from "../image/UserIcon";
 import useUser from "@/hooks/useUser";
 import { useRouter } from "next/navigation";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const UserInfo = () => {
-  const { userId: id, setUserId } = useStore();
+  const [userId, setUserId] = useState<number>(0);
+  const storeUserId = useStore().userId;
+
+  useLayoutEffect(() => {
+    if (!userId && typeof window !== "undefined") {
+      const storedUserId = Number(sessionStorage?.getItem("/login"));
+      setUserId(storeUserId || storedUserId);
+    }
+  }, [storeUserId]);
 
   const { push } = useRouter();
-  const { data, isLoading } = useUser(id);
+  const { data, isLoading } = useUser(Number(userId));
 
   if (isLoading) {
     return <div>Loading...</div>;
