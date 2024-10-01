@@ -7,7 +7,7 @@ const HomeHeader = () => {
   const { push } = useRouter();
 
   const goToMyPage = () => {
-    const userId = sessionStorage.getItem("userId");
+    const userId = sessionStorage.getItem("/login");
 
     if (userId) {
       push("/mypage");
