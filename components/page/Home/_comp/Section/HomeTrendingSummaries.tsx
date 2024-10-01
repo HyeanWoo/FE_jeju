@@ -48,12 +48,14 @@ const HomeTrendingSummaries = () => {
               /> */}
             </div>
             <div className="flex flex-col space-y-1">
-              <h4 className="text-bodyBold text-neutral-800">
-                {summary.title}
-              </h4>
-              <h5 className="truncate text-caption text-neutral-400">
-                {summary.description}
-              </h5>
+              <h4
+                className="text-bodyBold text-neutral-800"
+                dangerouslySetInnerHTML={{ __html: summary.title }}
+              ></h4>
+              <h5
+                className="truncate text-caption text-neutral-400"
+                dangerouslySetInnerHTML={{ __html: summary.description }}
+              ></h5>
             </div>
           </div>
         )}

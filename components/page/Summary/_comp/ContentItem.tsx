@@ -47,13 +47,17 @@ export default function ContentItem({
               className="flex flex-col space-y-2 hover:cursor-pointer"
               onClick={goToContentPage}
             >
-              <h3 className="text-heading">{content.title}</h3>
+              <h3
+                className="text-heading"
+                dangerouslySetInnerHTML={{ __html: content.title }}
+              ></h3>
               <h5 className="text-caption text-neutral-400">
                 {content.category}
               </h5>
-              <h4 className="w-[260px] truncate text-label text-neutral-700 sm:w-[670px]">
-                {content.description}
-              </h4>
+              <h4
+                className="w-[260px] truncate text-label text-neutral-700 sm:w-[670px]"
+                dangerouslySetInnerHTML={{ __html: content.description }}
+              ></h4>
             </div>
           </div>
           <div className="flex space-x-2 overflow-x-auto">

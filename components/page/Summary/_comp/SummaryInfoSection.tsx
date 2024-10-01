@@ -42,7 +42,10 @@ export default function SummaryInfoSection({ id }: { id: number }) {
         /> */}
       </div>
       <div className="flex flex-col space-y-3">
-        <h1 className="text-title3 text-neutral-900">{summaryData?.title}</h1>
+        <h1
+          className="text-title3 text-neutral-900"
+          dangerouslySetInnerHTML={{ __html: summaryData?.title || "" }}
+        ></h1>
         <div className="flex space-x-1.5">
           {tags.map((tag, index) => (
             <Fragment key={tag}>
@@ -53,9 +56,10 @@ export default function SummaryInfoSection({ id }: { id: number }) {
             </Fragment>
           ))}
         </div>
-        <h3 className="text-bodyRegular text-neutral-800">
-          {summaryData?.description}
-        </h3>
+        <h3
+          className="text-bodyRegular text-neutral-800"
+          dangerouslySetInnerHTML={{ __html: summaryData?.description || "" }}
+        ></h3>
       </div>
       <CourseProgress summaryId={id} />
     </section>
