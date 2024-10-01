@@ -34,8 +34,14 @@ const HomeSpotsInJeju = () => {
               className="h-[140px] w-[140px] rounded-[4px] object-cover"
             />
             <div className="flex flex-col space-y-1">
-              <h4 className="text-bodyBold text-neutral-800">{course.title}</h4>
-              <h5 className="text-caption text-neutral-400">{course.addr1}</h5>
+              <h4
+                className="text-bodyBold text-neutral-800"
+                dangerouslySetInnerHTML={{ __html: course.title }}
+              ></h4>
+              <h5
+                className="text-caption text-neutral-400"
+                dangerouslySetInnerHTML={{ __html: course.addr1 }}
+              ></h5>
             </div>
           </div>
         ))}

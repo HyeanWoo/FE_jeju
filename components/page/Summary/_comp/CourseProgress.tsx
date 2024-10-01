@@ -12,6 +12,10 @@ export default function CourseProgress({ summaryId }: { summaryId: number }) {
     }
   });
 
+  if (!userId) {
+    return <></>;
+  }
+
   const { data: { contents } = {} } = useSummaryContentsByUser(
     summaryId,
     userId,

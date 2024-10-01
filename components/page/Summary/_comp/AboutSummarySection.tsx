@@ -1,6 +1,9 @@
 "use client";
 
-import { useSummaryContentsByUser } from "@/components/api/queries";
+import {
+  useSummaryContents,
+  useSummaryContentsByUser,
+} from "@/components/api/queries";
 import { Position } from "@/components/api/types";
 import SummaryMap from "./SummaryMap";
 import ContentItem from "./ContentItem";
@@ -16,8 +19,12 @@ export default function AboutSummarySection({ id }: { id: number }) {
     }
   });
 
-  const { data: { contents } = {} } = useSummaryContentsByUser(id, userId);
+  const { data: { contents: commonContents } = {} } = useSummaryContents(id);
+  const { data: { contents: personalContents } = {} } =
+    useSummaryContentsByUser(id, userId);
 
+  const contents = personalContents ?? commonContents;
+  console.log(commonContents);
   const contentList = contents?.map((content) => ({
     ...content.content,
     isCertified: content.isCertified,
