@@ -14,8 +14,8 @@ const UserInfo = () => {
   }
 
   return (
-    <div className="flex h-[104px] w-[350px] items-center space-x-4">
-      <div className="flex h-[80px] w-[350px] items-center rounded-lg bg-gray-200 px-3">
+    <div className="flex h-[104px] w-full items-center space-x-4">
+      <div className="flex h-[80px] w-full items-center rounded-lg bg-gray-200 px-3">
         <div className="flex h-[56px] w-[56px] items-center justify-center rounded-[8px] bg-white">
           <UserIcon />
         </div>

@@ -3,19 +3,18 @@ import Header from "./_comp/Header";
 import MyPageTabs from "./_comp/MyPageTabs";
 import TabContents from "./_comp/TabContents";
 import UserInfo from "./_comp/UserInfo";
+
 const MyPage = () => {
   return (
-    <div className="space-y mx-auto mb-24 flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
-      <div className="w-full max-w-lg rounded-lg bg-white p-4">
-        <Header />
-        <main className="container flex w-full flex-col px-5">
-          <UserInfo />
-          <Suspense>
-            <MyPageTabs />
-            <TabContents />
-          </Suspense>
-        </main>
-      </div>
+    <div className="mx-auto flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
+      <Header />
+      <main className="container flex w-full flex-col px-5">
+        <UserInfo />
+        <Suspense>
+          <MyPageTabs />
+          <TabContents />
+        </Suspense>
+      </main>
     </div>
   );
 };

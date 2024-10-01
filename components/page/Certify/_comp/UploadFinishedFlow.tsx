@@ -1,12 +1,17 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function UploadFinishedFlow() {
+export default function UploadFinishedFlow({ isLast }: { isLast?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
 
   const goToContentPage = () => {
-    router.push(pathname.split("/").slice(0, 3).join("/"));
+    const path = pathname.split("/").slice(0, 3).join("/");
+    const queryParams = new URLSearchParams({
+      isLast: `${isLast ?? false}`,
+    });
+
+    router.push(`${path}?${queryParams}`);
   };
 
   return (

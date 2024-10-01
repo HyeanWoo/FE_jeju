@@ -2,6 +2,9 @@
   "name": "be_jeju",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +14,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.51.18",
     "clsx": "^2.1.1",
+    "html-to-image": "^1.11.11",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",

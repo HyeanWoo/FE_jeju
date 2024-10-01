@@ -16,7 +16,7 @@ const CompletedPlaceHolder = () => {
       {CompletedList.map((item, index) => (
         <div
           key={index}
-          className="opacity-1 flex h-[100px] w-[350px] items-start gap-3"
+          className="opacity-1 relative flex h-[100px] w-[350px] items-start gap-3"
         >
           <ThumbnailImage
             width={175}
@@ -25,6 +25,7 @@ const CompletedPlaceHolder = () => {
             alt="Thumbnail"
             className="rounded-md object-cover"
           />
+          <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
 
           <div className="flex-1 items-start">
             <p className="text-base font-bold">{item.desc}</p>
@@ -48,8 +49,6 @@ const CompletedSection = () => {
 
   const { data, isLoading } = useTourFinish(userId);
 
-  console.log("data", data);
-
   return (
     <div className="space-y-4">
       {!data || isLoading || data?.length === 0 ? (
@@ -58,7 +57,7 @@ const CompletedSection = () => {
         data?.map((item, index) => (
           <div
             key={index}
-            className="opacity-1 flex h-[100px] w-[350px] items-start gap-3"
+            className="opacity-1 relative flex h-[100px] w-full items-start gap-3"
           >
             <ThumbnailImage
               width={175}
@@ -67,6 +66,7 @@ const CompletedSection = () => {
               alt="Thumbnail"
               className="rounded-md object-cover"
             />
+            <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
 
             <div className="flex-1 items-start">
               <p className="text-base font-bold">{item.description}</p>

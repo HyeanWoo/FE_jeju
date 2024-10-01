@@ -58,9 +58,10 @@ const HomeHeroBanner = () => {
           height={37}
           style={{ width: 133, height: 37 }}
         /> */}
-        <h3 className="text-bodyRegular text-white">
-          {signatureSummary.title}
-        </h3>
+        <h3
+          className="text-bodyRegular text-white"
+          dangerouslySetInnerHTML={{ __html: signatureSummary.title }}
+        ></h3>
         <div className="flew-col flex space-x-1.5 text-label text-white">
           {tags.map((tag, index) => (
             <Fragment key={tag}>

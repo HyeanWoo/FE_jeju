@@ -1,3 +1,4 @@
+import DetailHeader from "@/components/shared/Header/DetailHeader";
 import { CertifyHeader, UploadPhotoFunnel } from "./_comp";
 
 export default function CertifyRoot({
@@ -10,7 +11,7 @@ export default function CertifyRoot({
 
   return (
     <div className="mx-auto mb-24 flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
-      <CertifyHeader />
+      <DetailHeader url={`/summary/${summaryId}/content/${contentId}`} />
       <UploadPhotoFunnel contentId={contentId} summaryId={summaryId} />
     </div>
   );

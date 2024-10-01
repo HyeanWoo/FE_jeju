@@ -4,6 +4,7 @@ import {
   ContentFinish,
   KakaoTokenResponse,
   TourFinish,
+  TourImageListResponse,
   UserResponse,
 } from "./types/type";
 
@@ -278,6 +279,24 @@ export const certifyCourse = async (
 export const getTourList = async (userId: number) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API}/tour/list?memberId=${userId}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("network problem is occurred.");
+  }
+
+  return response.json();
+};
+
+export const getTourImageList = async (
+  userId: number,
+  summaryId: string,
+): Promise<TourImageListResponse> => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API}/image/${summaryId}/list?memberId=${userId}`,
     {
       cache: "no-store",
     },

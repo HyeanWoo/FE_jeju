@@ -6,15 +6,16 @@ import {
 import Divider from "@/components/common/Divider";
 import {
   AboutSummarySection,
-  SummaryHeader,
   SummaryInfoSection,
   SimilarSummarySection,
+  CertifyCompleteModal,
 } from "./_comp";
 import { fetchContentsBySummaryId, fetchSummary } from "@/components/api/fetch";
 import {
   REACT_QUERY_GC_TIME,
   REACT_QUERY_STALE_TIME,
 } from "@/components/common/constants";
+import DetailHeader from "@/components/shared/Header/DetailHeader";
 
 export default async function SummaryRoot({
   params,
@@ -45,7 +46,7 @@ export default async function SummaryRoot({
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="mx-auto mb-24 flex w-full max-w-[390px] flex-col sm:max-w-[744px]">
-        <SummaryHeader />
+        <DetailHeader url="/" />
         <main className="container flex w-full flex-col px-5">
           <SummaryInfoSection id={id} />
           <Divider />
@@ -54,6 +55,7 @@ export default async function SummaryRoot({
           <SimilarSummarySection id={id} />
         </main>
       </div>
+      <CertifyCompleteModal id={id} />
     </HydrationBoundary>
   );
 }

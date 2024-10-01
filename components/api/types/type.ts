@@ -142,3 +142,4 @@ type TourSummary = {
 };
 
 export type TourListResponse = TourSummary[];
+export type TourImageListResponse = Image[];

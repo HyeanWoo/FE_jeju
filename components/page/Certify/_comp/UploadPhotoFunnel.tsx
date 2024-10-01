@@ -78,7 +78,9 @@ export default function UploadPhotoFunnel({
           removePhoto={removePhoto}
         />
       )}
-      {step === UPLOAD_STEP.finish && <UploadFinishedFlow />}
+      {step === UPLOAD_STEP.finish && (
+        <UploadFinishedFlow isLast={certifyMutation.data?.isLast} />
+      )}
     </div>
   );
 }

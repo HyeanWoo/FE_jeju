@@ -7,7 +7,6 @@ import HomeHeader from "./_comp/HomeHeader";
 import {
   HomeHeroBanner,
   HomeLatestSummaries,
-  HomeProgram,
   HomeSpotlight,
   HomeSpotsInJeju,
   HomeTouringSummaries,
@@ -19,6 +18,7 @@ import {
   REACT_QUERY_STALE_TIME,
 } from "@/components/common/constants";
 import Footer from "@/components/shared/Footer";
+import BottomSheet from "@/components/common/Modal/BottomSheet/BottomSheet";
 
 export default async function HomeRoot() {
   const queryClient = new QueryClient({
@@ -40,11 +40,11 @@ export default async function HomeRoot() {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <main className="mx-auto mb-[50px] flex w-full max-w-[390px] flex-col px-5 sm:max-w-[744px]">
         <HomeHeader />
-        <div className="container flex flex-col space-y-[50px]">
+        <div className="container flex flex-col">
           <HomeHeroBanner />
           <HomeTouringSummaries />
           <HomeTrendingSummaries />
-          <HomeProgram />
+          {/* <HomeProgram /> */}
           <HomeSpotlight />
           <HomeLatestSummaries />
           <HomeSpotsInJeju />

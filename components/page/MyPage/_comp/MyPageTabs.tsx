@@ -21,7 +21,7 @@ const MyPageTabs = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex">
       <div className="w-full max-w-md">
         <div className="flex h-[52px] items-center gap-4">
           <button

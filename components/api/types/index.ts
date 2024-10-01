@@ -11,4 +11,5 @@ export type {
   ContentFinish,
   CertifyResponse,
   TourListResponse,
+  TourImageListResponse,
 } from "./type";

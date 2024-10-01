@@ -1,4 +1,4 @@
-"use clinet";
+"use client";
 import { PropsWithChildren } from "react";
 import ModalPortal from "../ModalPortal";
 

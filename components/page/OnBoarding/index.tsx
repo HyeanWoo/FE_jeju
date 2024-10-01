@@ -12,7 +12,7 @@ const OnBoarding = (props: { params: { step: string }; searchParams: {} }) => {
   }
 
   return (
-    <main className="mx-auto mb-[50px] flex w-full max-w-[390px] flex-col px-5 pt-[60px] sm:max-w-[744px]">
+    <main className="mx-auto flex w-full max-w-[390px] flex-col px-5 pt-[60px] sm:max-w-[744px]">
       {step === "first" && <FirstStep />}
       {step === "second" && <SecondStep />}
       {step === "third" && <ThirdStep />}
