@@ -2,12 +2,17 @@
 
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSummaries } from "@/components/api/queries";
-import Image from "next/image";
 import { Summary } from "@/components/api/types";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
+import { useRouter } from "next/navigation";
 
 const HomeHeroBanner = () => {
   const { data } = useSummaries();
+  const { push } = useRouter();
+
+  const goToSummaryPage = (id: number) => {
+    push(`/summary/${id}`);
+  };
 
   const summaries = useMemo(
     () => data?.map((summary) => summary.summary) ?? [],
@@ -32,7 +37,10 @@ const HomeHeroBanner = () => {
   }
 
   return (
-    <section className="container relative z-0 mx-auto cursor-default">
+    <section
+      className="container relative z-0 mx-auto cursor-pointer"
+      onClick={() => goToSummaryPage(signatureSummary.id)}
+    >
       <div>
         <ThumbnailImage
           src={signatureSummary?.image.imageUrl}

@@ -32,5 +32,6 @@ export const useSummaryContentsByUser = (summaryId: number, userId: number) => {
     queryKey: ["summaryContentsByUser", summaryId, userId],
     queryFn: () => fetchContentsBySummaryId(summaryId, userId),
     refetchOnMount: "always",
+    enabled: !!userId,
   });
 };
