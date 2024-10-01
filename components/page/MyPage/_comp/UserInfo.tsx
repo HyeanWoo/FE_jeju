@@ -3,10 +3,12 @@
 import useStore from "@/components/common/store/store";
 import UserIcon from "../image/UserIcon";
 import useUser from "@/hooks/useUser";
+import { useRouter } from "next/navigation";
 
 const UserInfo = () => {
-  const id = useStore().userId;
+  const { userId: id, setUserId } = useStore();
 
+  const { push } = useRouter();
   const { data, isLoading } = useUser(id);
 
   if (isLoading) {
@@ -25,7 +27,14 @@ const UserInfo = () => {
           </h2>
           <p className="text-gray-600">{`ID ${data?.id}`}</p>
         </div>
-        <button className="ml-auto flex-shrink-0 text-left text-[14px] font-[500] leading-[17.5px] text-[#8D9097]">
+        <button
+          className="ml-auto flex-shrink-0 text-left text-[14px] font-[500] leading-[17.5px] text-[#8D9097]"
+          onClick={() => {
+            setUserId(0);
+            sessionStorage.clear();
+            push("/");
+          }}
+        >
           로그아웃
         </button>
       </div>
