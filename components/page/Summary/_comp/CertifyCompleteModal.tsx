@@ -20,7 +20,8 @@ export default function CertifyCompleteModal({ id }: { id: number }) {
 
   const isCourseCompleted =
     searchParams.get("isLast") === "true" ||
-    contents?.every((content) => content.isCertified === true);
+    (contents?.length !== 0 &&
+      contents?.every((content) => content.isCertified === true));
 
   return (
     isCourseCompleted && <ConfirmModal summaryId={id} onClose={() => {}} />
