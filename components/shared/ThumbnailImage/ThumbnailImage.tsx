@@ -8,6 +8,8 @@ type ThumbnailImageProps = {
   className?: string;
   sizes?: string;
   onClick?: () => void;
+  fill?: boolean;
+  objectFit?: string;
 };
 
 const DEFAULT_PLACEHOLDER = "/image/image-placeholder.svg";
@@ -20,6 +22,8 @@ export default function ThumbnailImage({
   width,
   sizes,
   onClick,
+  fill,
+  objectFit,
 }: ThumbnailImageProps) {
   const imageUrl =
     src === DEFAULT_PLACEHOLDER
@@ -34,6 +38,8 @@ export default function ThumbnailImage({
       className={className}
       sizes={sizes}
       onClick={onClick}
+      fill={fill}
+      objectFit={objectFit}
     />
   );
 }

@@ -195,7 +195,10 @@ export const updateSignUp = async (
   return response.json() as Promise<SignUpResponse>;
 };
 
-export const getUser = async (userId: number): Promise<UserResponse> => {
+export const getUser = async (
+  userId: number,
+  any?: any,
+): Promise<UserResponse> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_API_V1}/member/${userId}`,
     {
@@ -211,6 +214,10 @@ export const getUser = async (userId: number): Promise<UserResponse> => {
     const errorData = await response.json();
     throw new Error(`Error ${response.status}: ${errorData.message}`);
   }
+
+  console.group("useUser response");
+  console.log(any, userId, response);
+  console.groupEnd();
 
   return response.json();
 };

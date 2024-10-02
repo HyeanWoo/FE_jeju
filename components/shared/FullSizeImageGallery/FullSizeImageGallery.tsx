@@ -36,15 +36,16 @@ export default function FullSizeImageGallery({
 
   const [translateX, setTranslateX] = useState<number>(0);
   const [startPosition, setStartPosition] = useState<number>(0);
-  const [itemWidth, setItemWidth] = useState<number>(0);
+  const [itemWidth, setItemWidth] = useState<number>(350);
+  const [itemHeight, setItemHeight] = useState<number>(733);
 
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [dragging, setDragging] = useState<boolean>(false);
 
   useEffect(() => {
     const { clientWidth } = document.body;
-
     setItemWidth(clientWidth);
+    setItemHeight((window.innerHeight * 5) / 6);
   }, []);
 
   const slideToPrev = () => {
@@ -95,7 +96,7 @@ export default function FullSizeImageGallery({
   return (
     <>
       {isOpen && (
-        <div className="fixed left-0 top-0 z-10 h-full w-full bg-black py-[11px]">
+        <div className="fixed left-0 top-0 z-10 h-screen max-h-screen w-screen bg-black py-[11px]">
           <div className="flex w-full items-center justify-between px-2">
             <div className="flex items-center">
               <div className="p-3" onClick={close}>
@@ -117,7 +118,7 @@ export default function FullSizeImageGallery({
 
           <div
             ref={galleryRef}
-            className="relative flex h-5/6 cursor-pointer items-center overflow-hidden"
+            className="relative flex h-5/6 w-full cursor-pointer items-center overflow-hidden"
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
@@ -128,13 +129,11 @@ export default function FullSizeImageGallery({
               style={{
                 transform: `translateX(calc(-${currentIndex * itemWidth}px + ${translateX}px))`,
                 width: `${itemWidth * itemCount}px`,
+                height: `${itemHeight}px`,
               }}
             >
               {imageList.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex h-5/6 w-screen flex-shrink-0"
-                >
+                <div key={item.id} className="flex h-full w-full flex-shrink-0">
                   <div
                     className="flex h-full w-full"
                     onClick={(e) => {
@@ -143,14 +142,12 @@ export default function FullSizeImageGallery({
                       }
                     }}
                   >
-                    <div className="relative w-full">
+                    <div className="relative h-full w-full">
                       <ThumbnailImage
                         src={item?.imageUrl}
                         alt={item?.imageName}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        className="h-full w-full object-contain"
+                        fill
+                        objectFit="contain"
                       />
                       <div className="absolute left-0 top-0 z-20 h-full w-full" />
                     </div>

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useUser = (userId: number) => {
   return useQuery({
-    queryKey: ["getUser"],
+    queryKey: ["getUser", userId],
     queryFn: () => getUser(userId),
     enabled: !!userId,
   });

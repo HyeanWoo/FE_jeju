@@ -23,11 +23,10 @@ const HomeLatestSummaries = () => {
     <Section title="최신 등록된 코스">
       <Section.ItemList
         items={summaries}
-        isCursor={true}
         renderItem={(summary, index) => (
           <div
             key={index + summary.title}
-            className="flex w-[252px] max-w-[252px] flex-none flex-col space-y-2"
+            className="flex w-[252px] max-w-[252px] flex-none cursor-pointer flex-col space-y-2"
             onClick={() => goToSummaryPage(summary.id)}
           >
             <ThumbnailImage

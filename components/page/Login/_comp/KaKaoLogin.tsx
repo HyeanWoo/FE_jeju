@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useUpdateSignUp } from "../_hook/useUpdateSignUp";
 import { getUser } from "@/components/api/fetch";
 import useStore from "@/components/common/store/store";
+import useUser from "@/hooks/useUser";
 
 const getKakaoAuthUrl = (clientId: any, redirectUri: any) =>
   `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
@@ -47,7 +48,7 @@ const checkUserExists = async (id: any) => {
   try {
     const user = await getUser(id);
 
-    return !!user;
+    return user;
   } catch {
     return false;
   }
@@ -95,18 +96,25 @@ const KakaoLoginButton = () => {
   useEffect(() => {
     const updateUserInfo = async () => {
       const { id, nickname } = userInfoQuery.data;
-      sessionStorage.setItem(`/login`, id);
-      setUserId(id);
+      const userInfo = await checkUserExists(id);
 
-      const isUser = await checkUserExists(id);
-
-      if (isUser) {
+      if (!!userInfo) {
         push("/mypage");
+
+        sessionStorage.setItem(`/login`, userInfo.id.toString());
+        setUserId(userInfo.id);
       } else {
         await mutate({
           nickname: nickname || generateRandomKakaoNickname(),
           userId: id,
         });
+
+        const user = await getUser(id, "2");
+
+        console.group("useUser");
+        console.log(user);
+        console.groupEnd();
+
         push("/onboarding/first");
       }
     };
