@@ -18,7 +18,7 @@ const SecondStep = () => {
         <div>나만의 트래블로그 남기기!</div>
       </Typography>
       <Image
-        className="h-[420px] w-[260px] object-cover pb-4"
+        className="mb-4 h-[420px] w-[260px]"
         src={secondImag}
         alt="first"
       />

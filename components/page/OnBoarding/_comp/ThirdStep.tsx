@@ -17,7 +17,7 @@ const ThirdStep = () => {
         <div>특별한 트래블컷이 완성돼요</div>
       </Typography>
       <Image
-        className="h-[420px] w-[260px] object-cover pb-4"
+        className="mb-4 h-[420px] w-[260px]"
         src={thirdImage}
         alt="first"
       />

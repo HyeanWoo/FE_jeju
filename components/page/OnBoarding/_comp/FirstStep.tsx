@@ -16,11 +16,7 @@ const FirstStep = () => {
         <div>방송에서 봤던 제주도 여행코스</div>
         <div>내 여행코스에 저장!</div>
       </Typography>
-      <Image
-        className="h-[420px] w-[260px] object-cover pb-4"
-        src={firstImag}
-        alt="first"
-      />
+      <Image className="mb-4 h-[420px] w-[260px]" src={firstImag} alt="first" />
       <div className="flex h-[14px] w-full justify-center pb-[37px]">
         <div className="flex items-center space-x-2">
           <div className="h-[6px] w-[16px] rounded-full bg-neutral-300"></div>

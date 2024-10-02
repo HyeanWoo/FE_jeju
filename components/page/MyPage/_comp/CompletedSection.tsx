@@ -5,34 +5,21 @@ import useTourFinish from "../_hook/useTourFinish";
 import { useEffect, useState } from "react";
 
 const CompletedPlaceHolder = () => {
-  const CompletedList = [
-    { desc: "장소 인증을 해보세요" },
-    { desc: "장소 인증을 해보세요" },
-    { desc: "장소 인증을 해보세요" },
-    { desc: "장소 인증을 해보세요" },
-  ];
   return (
-    <>
-      {CompletedList.map((item, index) => (
-        <div
-          key={index}
-          className="opacity-1 relative flex h-[100px] w-[350px] items-start gap-3"
-        >
-          <ThumbnailImage
-            width={175}
-            height={100}
-            src={"/image/image-placeholder.svg"}
-            alt="Thumbnail"
-            className="rounded-md object-cover"
-          />
-          <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
+    <div className="opacity-1 relative flex h-[100px] items-start gap-3">
+      <ThumbnailImage
+        width={175}
+        height={100}
+        src={"/image/image-placeholder.svg"}
+        alt="Thumbnail"
+        className="rounded-md object-cover"
+      />
+      <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
 
-          <div className="flex-1 items-start">
-            <p className="text-base font-bold">{item.desc}</p>
-          </div>
-        </div>
-      ))}
-    </>
+      <div className="flex-1 items-start">
+        <p className="text-base font-bold">장소 인증을 해보세요!</p>
+      </div>
+    </div>
   );
 };
 

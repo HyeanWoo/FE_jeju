@@ -24,7 +24,7 @@ export default function AboutSummarySection({ id }: { id: number }) {
     useSummaryContentsByUser(id, userId);
 
   const contents = personalContents ?? commonContents;
-  console.log(commonContents);
+
   const contentList = contents?.map((content) => ({
     ...content.content,
     isCertified: content.isCertified,

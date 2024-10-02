@@ -18,7 +18,6 @@ import {
   REACT_QUERY_STALE_TIME,
 } from "@/components/common/constants";
 import Footer from "@/components/shared/Footer";
-import BottomSheet from "@/components/common/Modal/BottomSheet/BottomSheet";
 
 export default async function HomeRoot() {
   const queryClient = new QueryClient({

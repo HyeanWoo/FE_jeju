@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { useSummaryContentsByUser } from "@/components/api/queries";
+import {
+  useSummaryContents,
+  useSummaryContentsByUser,
+} from "@/components/api/queries";
 
 export default function CourseProgress({ summaryId }: { summaryId: number }) {
   const [userId, setUserId] = useState<number>(0);
@@ -12,18 +15,18 @@ export default function CourseProgress({ summaryId }: { summaryId: number }) {
     }
   });
 
-  if (!userId) {
-    return <></>;
-  }
+  const { data: { contents: commonContents } = {} } =
+    useSummaryContents(summaryId);
+  const { data: { contents: personalContents } = {} } =
+    useSummaryContentsByUser(summaryId, userId);
 
-  const { data: { contents } = {} } = useSummaryContentsByUser(
-    summaryId,
-    userId,
-  );
-  const contentList = contents?.map((content) => ({
-    isCertified: content.isCertified,
-    id: content.content.id,
-  }));
+  const contents = personalContents ?? commonContents;
+
+  const contentList =
+    contents?.map((content) => ({
+      isCertified: content.isCertified,
+      id: content.content.id,
+    })) ?? [];
 
   const finishedCourseCount = useMemo(
     () => contentList?.filter((content) => content.isCertified).length ?? 0,

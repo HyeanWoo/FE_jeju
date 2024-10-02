@@ -4,37 +4,21 @@ import useStore from "@/components/common/store/store";
 import { useTourSummaries } from "@/components/api/queries";
 
 const ProgressPlaceHolder = () => {
-  const CompletedList = [
-    { desc: "코스 진행을 시작해 보세요" },
-    { desc: "코스 진행을 시작해 보세요" },
-    { desc: "코스 진행을 시작해 보세요" },
-  ];
-
   return (
-    <>
-      {CompletedList.map((item, index) => (
-        <div
-          key={index}
-          className="opacity-1 relative flex h-[100px] w-[350px] items-start gap-3"
-        >
-          <ThumbnailImage
-            width={175}
-            height={100}
-            src={"/image/image-placeholder.svg"}
-            alt="Thumbnail"
-            className="rounded-md object-cover"
-          />
-          <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
+    <div className="opacity-1 relative flex h-[100px] items-start gap-3">
+      <ThumbnailImage
+        width={175}
+        height={100}
+        src={"/image/image-placeholder.svg"}
+        alt="Thumbnail"
+        className="rounded-md object-cover"
+      />
+      <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
 
-          <div className="flex-1 items-start">
-            <p className="rounded-md py-1 text-left text-[12px] font-semibold leading-[14.4px] text-[#8D9097]">
-              남은 코스
-            </p>
-            <p className="text-base font-bold">{item.desc}</p>
-          </div>
-        </div>
-      ))}
-    </>
+      <div className="flex-1 items-start">
+        <p className="text-base font-bold">코스 진행을 시작해 보세요!</p>
+      </div>
+    </div>
   );
 };
 
