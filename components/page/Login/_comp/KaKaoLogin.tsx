@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useUpdateSignUp } from "../_hook/useUpdateSignUp";
 import { getUser } from "@/components/api/fetch";
 import useStore from "@/components/common/store/store";
-import useUser from "@/hooks/useUser";
 
 const getKakaoAuthUrl = (clientId: any, redirectUri: any) =>
   `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
@@ -109,11 +108,9 @@ const KakaoLoginButton = () => {
           userId: id,
         });
 
-        const user = await getUser(id, "2");
-
-        console.group("useUser");
-        console.log(user);
-        console.groupEnd();
+        const user = await getUser(id);
+        sessionStorage.setItem(`/login`, user.id.toString());
+        setUserId(user.id);
 
         push("/onboarding/first");
       }
