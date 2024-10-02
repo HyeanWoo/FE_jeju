@@ -5,10 +5,12 @@ export default function AfterUploadFlow({
   preview,
   removePhoto,
   submit,
+  message,
 }: {
   preview: string | null;
   submit: (e: FormEvent<HTMLFormElement>) => void;
   removePhoto: () => void;
+  message: string;
 }) {
   return (
     <main className="container flex w-full flex-col px-5">
@@ -54,6 +56,9 @@ export default function AfterUploadFlow({
             </button>
           </div>
         </form>
+        {message && (
+          <p className="pt-2 text-center text-label text-main-500">{message}</p>
+        )}
       </div>
     </main>
   );

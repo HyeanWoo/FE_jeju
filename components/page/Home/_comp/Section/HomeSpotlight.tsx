@@ -24,8 +24,14 @@ const HomeSpotlight = () => {
             className="h-[136px] w-[96px] rounded-lg object-cover"
           />
           <div className="flex w-full flex-col justify-center space-y-1">
-            <h4 className="text-heading text-white">{summary?.title}</h4>
-            <h5 className="text-caption text-white">{summary?.description}</h5>
+            <h4
+              className="text-heading text-white"
+              dangerouslySetInnerHTML={{ __html: summary?.title }}
+            ></h4>
+            <h5
+              className="text-caption text-white"
+              dangerouslySetInnerHTML={{ __html: summary?.description }}
+            ></h5>
           </div>
         </div>
         <p className="text-label text-white">
@@ -45,12 +51,14 @@ const HomeSpotlight = () => {
               <div className="flex w-full items-center justify-between">
                 <div className="flex flex-col space-y-1 py-[3px]">
                   <h3 className="text-bodyBold text-white">{content.title}</h3>
-                  <h5 className="text-caption text-white">
-                    {content.category}
-                  </h5>
-                  <h4 className="text-label text-white">
-                    {content.description}
-                  </h4>
+                  <h5
+                    className="text-caption text-white"
+                    dangerouslySetInnerHTML={{ __html: content.category }}
+                  ></h5>
+                  <h4
+                    className="text-label text-white"
+                    dangerouslySetInnerHTML={{ __html: content.description }}
+                  ></h4>
                 </div>
               </div>
             </div>

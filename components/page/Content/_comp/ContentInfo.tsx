@@ -46,10 +46,22 @@ export default function ContentInfo({ content }: { content: Content }) {
       />
       <div className="flex flex-col space-y-6 pb-6 pt-6 sm:pb-10">
         <div className="flex flex-col space-y-3">
-          <h2 className="text-title3 text-neutral-900">{content.title}</h2>
-          <h6 className="text-label text-neutral-400">{content.category}</h6>
-          <h5 className="text-label text-neutral-700">{content.address}</h5>
-          <h6 className="text-label text-neutral-700">{content.phone}</h6>
+          <h2
+            className="text-title3 text-neutral-900"
+            dangerouslySetInnerHTML={{ __html: content.title }}
+          ></h2>
+          <h6
+            className="text-label text-neutral-400"
+            dangerouslySetInnerHTML={{ __html: content.category }}
+          ></h6>
+          <h5
+            className="text-label text-neutral-700"
+            dangerouslySetInnerHTML={{ __html: content.address }}
+          ></h5>
+          <h6
+            className="text-label text-neutral-700"
+            dangerouslySetInnerHTML={{ __html: content.phone }}
+          ></h6>
         </div>
 
         <div className="flex items-center">

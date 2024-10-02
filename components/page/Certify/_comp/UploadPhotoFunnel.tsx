@@ -94,6 +94,7 @@ export default function UploadPhotoFunnel({
           preview={preview}
           submit={submit}
           removePhoto={removePhoto}
+          message={message}
         />
       )}
       {step === UPLOAD_STEP.finish && (

@@ -107,7 +107,10 @@ export default function FullSizeImageGallery({
                   className="h-6 w-6"
                 />
               </div>
-              <h3 className="text-heading text-white">{content.title}</h3>
+              <h3
+                className="text-heading text-white"
+                dangerouslySetInnerHTML={{ __html: content.title }}
+              ></h3>
             </div>
             <p className="px-3 text-caption text-neutral-400">{`${currentIndex + 1}/${itemCount}`}</p>
           </div>
@@ -158,10 +161,14 @@ export default function FullSizeImageGallery({
           </div>
 
           <div className="flex w-full flex-col space-y-2 px-5 pb-10 pt-6">
-            <h5 className="text-caption text-neutral-100">
-              {content.category}
-            </h5>
-            <h4 className="text-label text-white">{content.description}</h4>
+            <h5
+              className="text-caption text-neutral-100"
+              dangerouslySetInnerHTML={{ __html: content.category }}
+            ></h5>
+            <h4
+              className="text-label text-white"
+              dangerouslySetInnerHTML={{ __html: content.description }}
+            ></h4>
           </div>
         </div>
       )}
