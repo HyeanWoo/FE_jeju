@@ -3,7 +3,6 @@ import Button from "@/components/common/Button/Button";
 import BottomSheet from "@/components/common/Modal/BottomSheet/BottomSheet";
 import Typography from "@/components/common/Typography/Typography";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 
 interface CompletedModalProps {
   onClose: () => void;

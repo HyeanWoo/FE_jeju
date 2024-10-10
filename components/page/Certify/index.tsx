@@ -1,5 +1,5 @@
 import DetailHeader from "@/components/shared/Header/DetailHeader";
-import { CertifyHeader, UploadPhotoFunnel } from "./_comp";
+import { UploadPhotoFunnel } from "./_comp";
 
 export default function CertifyRoot({
   params,

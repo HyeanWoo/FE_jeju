@@ -4,7 +4,7 @@ import useStore from "@/components/common/store/store";
 import UserIcon from "../image/UserIcon";
 import useUser from "@/hooks/useUser";
 import { useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const UserInfo = () => {
   const [userId, setUserId] = useState<number>(0);

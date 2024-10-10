@@ -2,7 +2,6 @@
 
 import { Summary } from "@/components/api/types";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
-import { useState } from "react";
 
 const _ = "w-[0%] w-[33%] w-[67%] w-[100%]";
 

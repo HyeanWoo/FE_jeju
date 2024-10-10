@@ -1,8 +1,6 @@
 "use client";
 
 import { useTourContent } from "@/components/api/queries";
-import Section from "@/components/common/Section/Section";
-import { otherSpots } from "@/lib/dummyData";
 import Image from "next/image";
 
 const HomeSpotsInJeju = () => {

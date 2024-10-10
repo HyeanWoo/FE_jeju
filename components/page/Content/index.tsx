@@ -1,7 +1,7 @@
 "use client";
 
 import Divider from "@/components/common/Divider";
-import { ContentHeader, ContentInfo, SimilarContent } from "./_comp";
+import { ContentInfo, SimilarContent } from "./_comp";
 import { useContent } from "@/components/api/queries";
 import DetailHeader from "@/components/shared/Header/DetailHeader";
 

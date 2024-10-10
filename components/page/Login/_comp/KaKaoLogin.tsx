@@ -95,13 +95,14 @@ const KakaoLoginButton = () => {
   useEffect(() => {
     const updateUserInfo = async () => {
       const { id, nickname } = userInfoQuery.data;
+      console.log("id", id);
       const userInfo = await checkUserExists(id);
 
       if (!!userInfo) {
         push("/mypage");
 
-        sessionStorage.setItem(`/login`, userInfo.id.toString());
-        setUserId(userInfo.id);
+        sessionStorage.setItem(`/login`, id);
+        setUserId(id);
       } else {
         await mutate({
           nickname: nickname || generateRandomKakaoNickname(),
@@ -109,8 +110,8 @@ const KakaoLoginButton = () => {
         });
 
         const user = await getUser(id);
-        sessionStorage.setItem(`/login`, user.id.toString());
-        setUserId(user.id);
+        sessionStorage.setItem(`/login`, user.email);
+        setUserId(Number(user?.email));
 
         push("/onboarding/first");
       }
