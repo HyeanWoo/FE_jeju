@@ -1,12 +1,10 @@
-"use client";
 import Button from "@/components/common/Button/Button";
 import Typography from "@/components/common/Typography/Typography";
 import Image from "next/image";
+import Link from "next/link";
 import firstImag from "../image/first.png";
-import { useRouter } from "next/navigation";
-const FirstStep = () => {
-  const { push } = useRouter();
 
+const FirstStep = () => {
   return (
     <div className="flex flex-col items-center">
       <Typography
@@ -24,13 +22,11 @@ const FirstStep = () => {
           <div className="h-[6px] w-[6px] rounded-full bg-neutral-100"></div>
         </div>
       </div>
-      <Button
-        onClick={() => push("/onboarding/second")}
-        className="w-full"
-        size="medium"
-      >
-        다음
-      </Button>
+      <Link href="/onboarding/second" className="w-full">
+        <Button className="w-full" size="medium">
+          다음
+        </Button>
+      </Link>
     </div>
   );
 };

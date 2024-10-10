@@ -1,16 +1,13 @@
-"use client";
 import Button from "@/components/common/Button/Button";
 import BottomSheet from "@/components/common/Modal/BottomSheet/BottomSheet";
 import Typography from "@/components/common/Typography/Typography";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface CompletedModalProps {
   onClose: () => void;
 }
 
 const CompletedModal = ({ onClose }: CompletedModalProps) => {
-  const router = useRouter();
-
   return (
     <BottomSheet onClose={onClose}>
       <div className="relative w-full rounded-t-2xl bg-white px-4 py-4">
@@ -28,24 +25,22 @@ const CompletedModal = ({ onClose }: CompletedModalProps) => {
             </Typography>
           </div>
 
-          <Button
-            className="w-full rounded-md bg-[#F43C60] py-3 font-semibold text-white"
-            variant="secondary"
-            onClick={() => {
-              router.push(`/`);
-            }}
-          >
-            실물로 받아보기
-          </Button>
-          <Button
-            className="w-full py-3 font-semibold text-[#5A5D64]"
-            variant="link"
-            onClick={() => {
-              router.push(`/`);
-            }}
-          >
-            괜찮아요
-          </Button>
+          <Link href={`/`} className="w-full">
+            <Button
+              className="w-full rounded-md bg-[#F43C60] py-3 font-semibold text-white"
+              variant="secondary"
+            >
+              실물로 받아보기
+            </Button>
+          </Link>
+          <Link href={`/`} className="w-full">
+            <Button
+              className="w-full py-3 font-semibold text-[#5A5D64]"
+              variant="link"
+            >
+              괜찮아요
+            </Button>
+          </Link>
         </div>
       </div>
     </BottomSheet>
