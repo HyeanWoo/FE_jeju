@@ -12,7 +12,7 @@ const UserInfo = () => {
 
   useLayoutEffect(() => {
     if (!userId && typeof window !== "undefined") {
-      const storedUserId = Number(sessionStorage?.getItem("/login"));
+      const storedUserId = Number(sessionStorage?.getItem("/email"));
       setUserId(storeUserId || storedUserId);
     }
   }, [storeUserId]);
