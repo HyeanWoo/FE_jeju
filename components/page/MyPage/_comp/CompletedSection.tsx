@@ -1,5 +1,4 @@
 "use client";
-import useStore from "@/components/common/store/store";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
 import useTourFinish from "../_hook/useTourFinish";
 import { useEffect, useState } from "react";
@@ -28,7 +27,7 @@ const CompletedSection = () => {
 
   useEffect(() => {
     if (!userId && typeof window !== "undefined") {
-      const storedUserId = Number(sessionStorage?.getItem("/email"));
+      const storedUserId = Number(sessionStorage?.getItem("/login"));
       setUserId(storedUserId);
     }
   }, []);

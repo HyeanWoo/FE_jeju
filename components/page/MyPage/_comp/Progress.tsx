@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { ThumbnailImage } from "@/components/shared/ThumbnailImage";
-import useStore from "@/components/common/store/store";
 import { useTourSummaries } from "@/components/api/queries";
 
 const ProgressPlaceHolder = () => {
@@ -27,7 +26,7 @@ const Progress = () => {
 
   useEffect(() => {
     if (!userId && typeof window !== "undefined") {
-      const storedUserId = Number(sessionStorage?.getItem("/email"));
+      const storedUserId = Number(sessionStorage?.getItem("/login"));
       setUserId(storedUserId);
     }
   }, []);
