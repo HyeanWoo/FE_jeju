@@ -54,7 +54,10 @@ const CompletedSection = () => {
             <div className="progress-gradient absolute left-0 top-0 z-10 h-full w-[175px] rounded-md" />
 
             <div className="flex-1 items-start">
-              <p className="text-base font-bold">{item.description}</p>
+              <p
+                className="text-base font-bold"
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              />
             </div>
           </div>
         ))
