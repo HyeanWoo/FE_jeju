@@ -24,14 +24,13 @@ const ProgressPlaceHolder = () => {
 
 const Progress = () => {
   const [userId, setUserId] = useState<number>(0);
-  const storeUserId = useStore().userId;
 
   useEffect(() => {
     if (!userId && typeof window !== "undefined") {
-      const storedUserId = Number(sessionStorage?.getItem("/login"));
-      setUserId(storeUserId || storedUserId);
+      const storedUserId = Number(sessionStorage?.getItem("/email"));
+      setUserId(storedUserId);
     }
-  }, [storeUserId]);
+  }, []);
 
   const { data, isLoading } = useTourSummaries(userId);
 

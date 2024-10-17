@@ -25,14 +25,13 @@ const CompletedPlaceHolder = () => {
 
 const CompletedSection = () => {
   const [userId, setUserId] = useState<number | null>(null);
-  const storeUserId = useStore().userId;
 
   useEffect(() => {
     if (!userId && typeof window !== "undefined") {
-      const storedUserId = Number(sessionStorage?.getItem("/login"));
-      setUserId(storeUserId || storedUserId);
+      const storedUserId = Number(sessionStorage?.getItem("/email"));
+      setUserId(storedUserId);
     }
-  }, [storeUserId]);
+  }, []);
 
   const { data, isLoading } = useTourFinish(userId);
 
