@@ -1,18 +1,24 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { certifyCourse } from "../fetch";
 
-export const useContentCertification = (contentId: number) => {
+export const useContentCertification = (
+  contentId: number,
+  summaryId: number,
+  userId: number,
+) => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: (certifyFormData: FormData) => {
       return certifyCourse(contentId, certifyFormData);
     },
-    onSuccess: (state) => {
-      console.group("certification mutation success");
-      console.log(state);
-      console.groupEnd();
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["summaryContentsByUser", summaryId, userId],
+      });
     },
     onError: (error) => {
-      console.group("certification mutation error");
+      console.group("certification error");
       console.log(error);
       console.groupEnd();
     },

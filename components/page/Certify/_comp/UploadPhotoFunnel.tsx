@@ -24,8 +24,13 @@ export default function UploadPhotoFunnel({
   const [preview, setPreview] = useState<string | null>(null);
   const [message, setMessage] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const userId = sessionStorage.getItem("/login");
 
-  const certifyMutation = useContentCertification(contentId);
+  const certifyMutation = useContentCertification(
+    contentId,
+    summaryId,
+    Number(userId),
+  );
 
   useEffect(() => {
     console.log(message);
@@ -56,8 +61,6 @@ export default function UploadPhotoFunnel({
       setMessage("업로드에 실패했습니다. 다시 시도해주세요.");
       return;
     }
-
-    const userId = sessionStorage.getItem("/login");
 
     if (!userId) {
       setMessage("잘못된 접근입니다.");
