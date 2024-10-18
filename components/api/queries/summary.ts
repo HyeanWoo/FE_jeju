@@ -26,6 +26,7 @@ export const useTourSummaries = (userId: number) => {
     queryKey: ["tourSummaries", userId],
     queryFn: () => getTourList(userId),
     enabled: !!userId,
+    refetchOnMount: "always",
   });
 };
 

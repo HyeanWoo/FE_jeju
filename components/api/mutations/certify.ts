@@ -16,6 +16,9 @@ export const useContentCertification = (
       queryClient.invalidateQueries({
         queryKey: ["summaryContentsByUser", summaryId, userId],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["tourSummaries", userId],
+      });
     },
     onError: (error) => {
       console.group("certification error");
